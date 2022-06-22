@@ -1,0 +1,23 @@
+@use "../../styles/mixin" as *;
+
+.navbar {
+  @include flex-layout(row, space-between, center);
+  padding: 0.5rem;
+
+  &-logo {
+    @include link-reset;
+    color: black;
+    text-transform: uppercase;
+  }
+  &-icons {
+    @include flex-layout(row);
+  }
+  &-icon {
+    transform: scale(1);
+    margin-left: 0.5rem;
+  }
+
+  @include tablet {
+    padding: 0.5rem 3rem;
+  }
+}

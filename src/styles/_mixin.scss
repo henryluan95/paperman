@@ -1,3 +1,5 @@
+@use "./variables" as *;
+
 @mixin list-reset {
   list-style: none;
   padding: 0;
@@ -6,7 +8,7 @@
 
 @mixin link-reset {
   text-decoration: none;
-  color: $color-white;
+  color: white;
 }
 
 @mixin flex-layout($direction, $justify: flex-start, $align: flex-start) {
@@ -14,6 +16,10 @@
   flex-direction: $direction;
   justify-content: $justify;
   align-items: $align;
+}
+
+@mixin transition {
+  transition: all 0.5s ease-in-out;
 }
 
 @mixin tablet {
