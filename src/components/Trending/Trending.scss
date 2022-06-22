@@ -1,0 +1,97 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixin" as *;
+
+.trending {
+  @include flex-layout(column, center, center);
+  padding: 1rem;
+
+  &__title {
+    font-size: 3rem;
+    font-family: $title;
+    font-weight: 600;
+    color: $drk-blue;
+  }
+
+  &__line {
+    height: 0.3rem;
+    width: 10rem;
+    border-radius: 10px;
+    background: $drk-pink;
+    margin-top: 1rem;
+  }
+
+  &__cards {
+    @include desktop {
+      @include flex-layout(row, center, center);
+      gap: 3rem;
+    }
+  }
+}
+
+.card {
+  @include flex-layout(column, center, center);
+  max-width: 18rem;
+  margin-top: 2rem;
+
+  &__img-wrapper {
+    position: relative;
+    @include transition;
+
+    &:hover {
+      .card__trending-img--hover {
+        opacity: 1;
+      }
+      .card__purchase-btn {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__trending-img {
+    @include transition;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__trending-img--hover {
+    @include transition;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+
+  &__purchase-btn {
+    width: 10rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.5rem 0.5rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 1rem;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 400;
+    opacity: 0;
+    z-index: 2;
+    @include transition;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &-price {
+      color: $grey-blue;
+      margin: 0.08rem 0;
+    }
+
+    &-product {
+      color: $drk-blue;
+      font-size: 1.5rem;
+    }
+  }
+}

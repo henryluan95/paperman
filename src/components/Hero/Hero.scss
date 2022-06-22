@@ -46,9 +46,10 @@
 
   &-cta {
     @include link-reset;
-    background-color: $drk-blue;
+    background: rgba(255, 255, 255, 0.7);
+    color: black;
     height: 2.5rem;
-    width: 7rem;
+    width: 8rem;
     border-radius: 1rem;
     border: none;
     @include flex-layout(row, center, center);

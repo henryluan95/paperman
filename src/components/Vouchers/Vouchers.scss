@@ -1,0 +1,35 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixin" as *;
+
+.promotion {
+  padding: 1rem;
+  @include flex-layout(column, center, center);
+
+  @include tablet {
+    @include flex-layout(row, space-between, center);
+    max-width: 72rem;
+    margin: 0 auto;
+  }
+
+  @include desktop {
+    padding: 2rem 0;
+  }
+
+  &__card {
+    @include flex-layout(column, center, center);
+    margin: 1rem 0;
+    width: 100%;
+    padding: 1rem 1rem;
+    border: 0.125rem $drk-blue dashed;
+    font-weight: 700;
+
+    @include tablet {
+      max-width: 20rem;
+    }
+  }
+
+  &__center {
+    margin: 1rem 0;
+    font-size: 1.5rem;
+  }
+}

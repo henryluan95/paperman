@@ -2,7 +2,7 @@
 
 .navbar {
   @include flex-layout(row, space-between, center);
-  padding: 0.5rem;
+  padding: 1rem;
 
   &-logo {
     @include link-reset;
