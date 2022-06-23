@@ -1,10 +1,11 @@
 import "./Products.scss";
 import productsData from "../../data/products.json";
 import React from "react";
+import Categories from "../Categories/Categories";
 
 const Products = () => {
   //create product to displace
-  const productElement = productsData.items.map((product) => {
+  const productsElement = productsData.items.map((product) => {
     return (
       <div className="product" key={product.sys.id}>
         <div className="product__btn">Add To Bag</div>
@@ -19,7 +20,12 @@ const Products = () => {
     );
   });
 
-  return <section className="products">{productElement}</section>;
+  return (
+    <div className="products-wrapper">
+      <Categories />
+      <div className="products">{productsElement}</div>;
+    </div>
+  );
 };
 
 export default Products;

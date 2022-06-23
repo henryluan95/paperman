@@ -15,7 +15,6 @@ const HomePage = () => {
       <Trending />
       <Sales />
       <Products />
-      <div className="homepage">HomePage</div>
     </>
   );
 };

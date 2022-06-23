@@ -1,10 +1,24 @@
 @use "../../styles/mixin" as *;
 @use "../../styles/variables" as *;
 
+.products-wrapper {
+  @include tablet {
+    @include flex-layout(row, flex-start, stretch);
+    padding-bottom: 2rem;
+  }
+}
+
 .products {
   @include flex-layout(column, center, center);
   gap: 2rem;
-  padding: 1rem;
+  padding: 0 1rem;
+  @include tablet {
+    margin: 0 auto;
+  }
+  @include desktop {
+    @include flex-layout(row, center);
+    flex-wrap: wrap;
+  }
 }
 
 .product {
@@ -13,6 +27,12 @@
 
   &__img {
     width: 100%;
+    @include tablet {
+      max-width: 32rem;
+    }
+    @include desktop {
+      max-width: 20rem;
+    }
   }
 
   &__btn {
@@ -42,6 +62,7 @@
   &__title {
     margin: 0.3rem 0;
     font-size: 1.2rem;
+    color: $drk-blue;
   }
 
   &__price {

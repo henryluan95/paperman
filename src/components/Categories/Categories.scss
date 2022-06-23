@@ -1,0 +1,86 @@
+@use "../../styles/mixin" as *;
+@use "../../styles/variables" as *;
+
+.categories-sticky__wrapper {
+  background-color: $drk-blue;
+  min-width: 8rem;
+  @include desktop {
+    min-width: 12rem;
+  }
+}
+.categories {
+  background: $drk-blue;
+  color: white;
+  text-align: center;
+  @include flex-layout(row, space-between, flex-start);
+
+  @include tablet {
+    @include flex-layout(column, flex-start, center);
+    position: sticky;
+    top: 5rem;
+  }
+}
+
+.category {
+  @include flex-layout(column, flex-start, space-between);
+  gap: 0.5rem;
+  padding: 2rem 1rem;
+  flex: 1;
+
+  @include tablet {
+    flex: none;
+  }
+
+  &__title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+
+  &__option {
+    font-size: 0.9rem;
+    margin: 0.2rem 0;
+    cursor: pointer;
+  }
+}
+
+// .categories-section {
+//     min-width: 8rem;
+//     background: $drk-blue;
+//     color: white;
+
+//     .categories-wrapper {
+//       @include flexCenter(column);
+//       align-items: flex-start;
+//       position: sticky;
+//       top: 5rem;
+//       .category {
+//         @include flexCenter(column);
+//         align-items: flex-start;
+//         padding: 1rem;
+
+//         .category-title {
+//           font-size: 1rem;
+//           font-family: $font-header;
+//           font-weight: 500;
+//           margin-bottom: 0.8rem;
+//         }
+//         .category-option {
+//           font-size: 0.9rem;
+//           margin: 0.2rem 0;
+//           cursor: pointer;
+//         }
+//         @include desktop {
+//           .category-title {
+//             font-size: 1.2rem;
+//           }
+//           .category-option {
+//             font-size: 1rem;
+//           }
+//         }
+//       }
+//       @include desktop {
+//         padding: 0 2rem;
+//       }
+//     }
+//   }
