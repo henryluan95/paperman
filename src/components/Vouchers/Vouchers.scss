@@ -4,6 +4,7 @@
 .promotion {
   padding: 1rem;
   @include flex-layout(column, center, center);
+  color: $drk-blue;
 
   @include tablet {
     @include flex-layout(row, space-between, center);

@@ -1,0 +1,74 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixin" as *;
+
+.sales {
+  margin: 2rem 0;
+  @include flex-layout(column, center, center);
+
+  @include desktop {
+    margin: 4rem 0;
+    @include flex-layout(row, center, center);
+    gap: 2rem;
+  }
+
+  &__img {
+    width: 100%;
+    @include tablet {
+      max-width: 48rem;
+    }
+    @include desktop {
+      max-width: 25rem;
+    }
+  }
+
+  &__info {
+    @include flex-layout(column, center, center);
+    padding: 2rem 0;
+    @include desktop {
+      min-width: 25rem;
+    }
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-family: $text;
+    font-weight: 400;
+    color: $drk-blue;
+  }
+
+  &__line {
+    height: 0.3rem;
+    width: 10rem;
+    border-radius: 10px;
+    background: $drk-pink;
+    margin-top: 1rem;
+  }
+
+  &__text {
+    margin: 1.5rem 0;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: $grey-blue;
+  }
+}
+
+.countdown {
+  @include flex-layout(row, space-around, center);
+
+  &__box {
+    @include flex-layout(column, center, center);
+    border: 0.1rem dashed black;
+    margin: 0 1rem;
+    min-width: 3rem;
+    min-height: 3rem;
+
+    @include tablet {
+      min-width: 4rem;
+      min-height: 4rem;
+    }
+  }
+
+  &__timer {
+    font-size: 1.5rem;
+  }
+}

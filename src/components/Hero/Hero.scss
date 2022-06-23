@@ -3,7 +3,6 @@
 
 .hero-wrapper {
   height: 100vh;
-  width: 100vw;
   background-image: url("../../assets/images/hero.png");
   background-size: cover;
   background-position: 49% 50%;
@@ -28,6 +27,7 @@
   &-subtitle {
     font-size: 1.2rem;
     margin-bottom: 1rem;
+    font-family: $text;
     @include tablet {
       font-size: 1.5rem;
       margin-bottom: 2rem;
@@ -56,6 +56,6 @@
   }
 
   @include tablet {
-    transform: translateY(-10rem);
+    transform: translateY(-6rem);
   }
 }

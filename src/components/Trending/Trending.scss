@@ -7,8 +7,8 @@
 
   &__title {
     font-size: 3rem;
-    font-family: $title;
-    font-weight: 600;
+    font-family: $text;
+    font-weight: 400;
     color: $drk-blue;
   }
 
@@ -21,8 +21,9 @@
   }
 
   &__cards {
-    @include desktop {
+    @include tablet {
       @include flex-layout(row, center, center);
+      flex-wrap: wrap;
       gap: 3rem;
     }
   }
@@ -91,7 +92,8 @@
 
     &-product {
       color: $drk-blue;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
+      font-weight: 600;
     }
   }
 }

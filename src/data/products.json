@@ -1,0 +1,154 @@
+{
+  "items": [
+    {
+      "sys": { "id": "1" },
+      "fields": {
+        "title": "Pink Peach",
+        "price": "$10.99",
+        "image": {
+          "fields": { "file": { "url": "./Asset/products/case-1.jpg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "2" },
+      "fields": {
+        "title": "Gaming",
+        "price": "$12.99",
+        "image": {
+          "fields": { "file": { "url": "./Asset/products/case-2.jpg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "3" },
+      "fields": {
+        "title": "Psyduck & Squirtle",
+        "price": "$12.99",
+        "image": {
+          "fields": { "file": { "url": "./Asset/products/case-3.jpg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "4" },
+      "fields": {
+        "title": "Hugging Goose",
+        "price": "$11.99",
+        "image": {
+          "fields": { "file": { "url": "./Asset/products/case-4.jpg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "5" },
+      "fields": {
+        "title": "Pink Drink",
+        "price": "$9.99",
+        "image": {
+          "fields": { "file": { "url": "./Asset/products/case-5.jpg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "6" },
+      "fields": {
+        "title": "Happy Faces",
+        "price": "$10.99",
+        "image": {
+          "fields": { "file": { "url": "./Asset/products/case-6.jpg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "7" },
+      "fields": {
+        "title": "Brown Bears",
+        "price": "$11.99",
+        "image": {
+          "fields": { "file": { "url": "./Asset/products/case-7.jpg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "8" },
+      "fields": {
+        "title": "Sporty Bear",
+        "price": "$10.99",
+        "image": {
+          "fields": { "file": { "url": "./Asset/products/case-8.jpg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "9" },
+      "fields": {
+        "title": "Bear Fam",
+        "price": "$12.99",
+        "image": {
+          "fields": { "file": { "url": "./Asset/products/case-9.jpg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "10" },
+      "fields": {
+        "title": "Bear/Bunny Astronaut",
+        "price": "$12.99",
+        "image": {
+          "fields": { "file": { "url": "./Asset/products/case-10.jpg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "11" },
+      "fields": {
+        "title": "Babys",
+        "price": "$9.99",
+        "image": {
+          "fields": { "file": { "url": "./Asset/products/case-11.jpg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "12" },
+      "fields": {
+        "title": "Get Rich Bear",
+        "price": "$11.99",
+        "image": {
+          "fields": { "file": { "url": "./Asset/products/case-12.jpg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "13" },
+      "fields": {
+        "title": "Super Bear",
+        "price": "$12.99",
+        "image": {
+          "fields": { "file": { "url": "./Asset/products/case-13.jpg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "14" },
+      "fields": {
+        "title": "Sweet Cookies",
+        "price": "$10.99",
+        "image": {
+          "fields": { "file": { "url": "./Asset/products/case-14.jpg" } }
+        }
+      }
+    },
+    {
+      "sys": { "id": "16" },
+      "fields": {
+        "title": "Style Cool",
+        "price": "$11.99",
+        "image": {
+          "fields": { "file": { "url": "./Asset/products/case-16.jpg" } }
+        }
+      }
+    }
+  ]
+}

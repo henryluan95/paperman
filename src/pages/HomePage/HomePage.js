@@ -4,6 +4,8 @@ import Hero from "../../components/Hero/Hero";
 import React from "react";
 import Trending from "../../components/Trending/Trending";
 import Vouchers from "../../components/Vouchers/Vouchers";
+import Sales from "../../components/Sales/Sales";
+import Products from "../../components/Products/Products";
 
 const HomePage = () => {
   return (
@@ -11,7 +13,9 @@ const HomePage = () => {
       <Hero />
       <Vouchers />
       <Trending />
-      <div className="homepage">HomePage</div>;
+      <Sales />
+      <Products />
+      <div className="homepage">HomePage</div>
     </>
   );
 };
