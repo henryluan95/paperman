@@ -14,7 +14,7 @@ const Products = () => {
           src={product.fields.image.fields.file.url}
           alt="case"
         />
-        <span className="product__title">{product.fields.title}</span>
+        <h3 className="product__title">{product.fields.title}</h3>
         <span className="product__price">{product.fields.price}</span>
       </div>
     );
@@ -23,7 +23,7 @@ const Products = () => {
   return (
     <div className="products-wrapper">
       <Categories />
-      <div className="products">{productsElement}</div>;
+      <div className="products">{productsElement}</div>
     </div>
   );
 };
