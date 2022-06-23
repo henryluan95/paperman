@@ -1,0 +1,51 @@
+@use "../../styles/mixin" as *;
+@use "../../styles/variables" as *;
+
+.products {
+  @include flex-layout(column, center, center);
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.product {
+  position: relative;
+  @include flex-layout(column);
+
+  &__img {
+    width: 100%;
+  }
+
+  &__btn {
+    width: 8rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    padding: 0.5rem 0.5rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 1rem;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 400;
+    opacity: 0;
+    z-index: 2;
+    @include transition;
+  }
+
+  &:hover {
+    .product__btn {
+      opacity: 1;
+    }
+  }
+
+  &__title {
+    margin: 0.3rem 0;
+    font-size: 1.2rem;
+  }
+
+  &__price {
+    color: $grey-blue;
+    font-size: 1rem;
+  }
+}
