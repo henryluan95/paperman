@@ -2,9 +2,9 @@ import "./Login.scss";
 
 import React from "react";
 
-const Login = () => {
+const Login = ({ isLoginClicked }) => {
   return (
-    <div className="login">
+    <div className={`login ${isLoginClicked ? "login--active" : ""} `}>
       <ul className="login__items">
         <form className="sign-in">
           <h4 className="sign-in__title" data-text="Sign In">
