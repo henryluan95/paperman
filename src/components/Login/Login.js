@@ -10,13 +10,13 @@ const Login = () => {
           <h4 className="sign-in__title" data-text="Sign In">
             Sign In
           </h4>
-          <label>
+          <label className="sign-in__label">
             Username:
-            <input placeholder="Enter Username" />
+            <input className="sign-in__input" placeholder="Enter Username" />
           </label>
-          <label>
+          <label className="sign-in__label">
             Password:
-            <input placeholder="Enter Password" />
+            <input className="sign-in__input" placeholder="Enter Password" />
           </label>
         </form>
         <h4 className="sign-up" data-text="Sign Up">
