@@ -1,0 +1,49 @@
+@use "../../styles/mixin" as *;
+@use "../../styles/variables" as *;
+
+.login {
+  @include flex-layout(row, center, center);
+  height: 100vh;
+
+  &__items {
+    @include flex-layout(column, center, center);
+    gap: 2rem;
+    padding: 0;
+  }
+}
+
+.sign-in {
+  @include flex-layout(column, center, center);
+  gap: 1rem;
+}
+
+.sign-in__title,
+.sign-up {
+  font-size: 2rem;
+  font-weight: 400;
+  font-family: $title;
+}
+
+.sign-up {
+  position: relative;
+  text-align: center;
+  &::before {
+    content: attr(data-text);
+    position: absolute;
+    font-size: 2.5rem;
+    width: 18rem;
+    top: 0;
+    left: 0;
+    transform: translate(-25%, -10%);
+    opacity: 0;
+    color: black;
+    letter-spacing: 1rem;
+    @include transition;
+  }
+  &:hover {
+    &::before {
+      opacity: 0.4;
+      letter-spacing: 0.6rem;
+    }
+  }
+}

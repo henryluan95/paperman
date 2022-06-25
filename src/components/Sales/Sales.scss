@@ -30,10 +30,11 @@
   }
 
   &__title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-family: $text;
     font-weight: 400;
     color: $drk-blue;
+    text-align: center;
   }
 
   &__line {

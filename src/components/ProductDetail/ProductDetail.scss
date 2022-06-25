@@ -1,0 +1,105 @@
+@use "../../styles/mixin" as *;
+@use "../../styles/variables" as *;
+
+.product-detail {
+  margin-top: 2.75rem;
+  padding-bottom: 2rem;
+  color: $drk-blue;
+  @include flex-layout(column, center, center);
+  @include tablet {
+    @include flex-layout(row, space-evenly, flex-start);
+    margin: 5rem auto 0 auto;
+    max-width: 50rem;
+  }
+  @include desktop {
+    max-width: 60rem;
+  }
+
+  &__img {
+    width: 100%;
+    max-width: 26rem;
+    @include tablet {
+      max-width: 28rem;
+    }
+  }
+
+  &__info {
+    @include flex-layout(column, center, center);
+    margin-top: 1rem;
+    gap: 1rem;
+    @include tablet {
+      margin-top: 0rem;
+      align-items: flex-start;
+    }
+  }
+
+  &__title {
+    font-family: $title;
+    font-size: 1.8rem;
+  }
+
+  &__price {
+    color: $grey-blue;
+    font-size: 1.2rem;
+  }
+
+  &__modals {
+    @include flex-layout(column, center, center);
+  }
+
+  &__modal {
+    margin-top: 0.5rem;
+    outline: none;
+    border: 1px solid $drk-blue;
+    border-radius: 20px;
+    height: 2rem;
+    padding: 0 1rem;
+    color: $drk-blue;
+  }
+
+  &__buttons {
+    @include flex-layout(row);
+    gap: 0.5rem;
+  }
+
+  &__buttons-like,
+  &__buttons-add {
+    width: 6rem;
+    height: 2rem;
+    padding: 0.5rem 0.5rem;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid $drk-blue;
+    border-radius: 1rem;
+    cursor: pointer;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: $drk-blue;
+  }
+
+  &__buttons-like {
+    border: 1px solid $drk-pink;
+  }
+
+  &__promo {
+    @include flex-layout(column, center, center);
+    font-size: 1.2rem;
+    @include tablet {
+      align-items: flex-start;
+    }
+  }
+
+  &__promo-input {
+    margin-top: 0.5rem;
+    outline: none;
+    border: 1px solid $drk-blue;
+    border-radius: 20px;
+    height: 2rem;
+    padding: 0 1rem;
+
+    &::placeholder {
+      text-align: center;
+      color: $drk-blue;
+    }
+  }
+}

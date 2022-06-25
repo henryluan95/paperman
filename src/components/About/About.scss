@@ -1,0 +1,64 @@
+@use "../../styles/mixin" as *;
+@use "../../styles/variables" as *;
+
+.about {
+  @include tablet {
+    @include flex-layout(row);
+  }
+
+  &__line {
+    display: none;
+    @include tablet {
+      display: block;
+      height: 0.3rem;
+      width: 20rem;
+      border-radius: 10px;
+      background: $drk-pink;
+      margin: 0 auto 2rem auto;
+    }
+  }
+
+  &__us {
+    @include tablet {
+      @include flex-layout(column, center, center);
+    }
+  }
+
+  &__us-img {
+    min-height: 10rem;
+    width: 100%;
+    background-image: url("../../assets/images/case44.jpg");
+    background-size: cover;
+    background-position: 0% 48%;
+    @include tablet {
+      order: 2;
+      min-height: 14rem;
+    }
+  }
+
+  &__products-img {
+    @extend .about__us-img;
+    background-image: url("../../assets/images/case33.jpg");
+    background-position: 0% 50%;
+  }
+
+  &__us-info {
+    @include flex-layout(column, center, center);
+    text-align: center;
+    margin: 2rem 1rem;
+    @include tablet {
+      order: 1;
+      min-height: 14rem;
+      margin: 0 2rem;
+    }
+
+    @include desktop {
+      margin: 0 4rem;
+    }
+  }
+
+  &__us-title {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+}
