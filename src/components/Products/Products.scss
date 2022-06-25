@@ -35,26 +35,21 @@
     }
   }
 
-  &__btn {
+  &__button {
     width: 8rem;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -100%);
-    padding: 0.5rem 0.5rem;
     background: rgba(255, 255, 255, 0.7);
-    border-radius: 1rem;
-    cursor: pointer;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: 400;
+    border: none;
     opacity: 0;
     z-index: 2;
     @include transition;
   }
 
   &:hover {
-    .product__btn {
+    .product__button {
       opacity: 1;
     }
   }

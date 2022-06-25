@@ -16,8 +16,10 @@ const ProductDetail = () => {
         <span className="product-detail__price">$6.99</span>
 
         <div className="product-detail__buttons">
-          <button className="product-detail__buttons-like">Like</button>
-          <button className="product-detail__buttons-add">Add to Cart</button>
+          <button className="button product-detail__buttons-like">Like</button>
+          <button className="button product-detail__buttons-add">
+            Add to Cart
+          </button>
         </div>
         <label className="product-detail__promo">
           Promo Code

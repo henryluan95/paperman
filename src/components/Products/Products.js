@@ -8,7 +8,7 @@ const Products = () => {
   const productsElement = productsData.items.map((product) => {
     return (
       <div className="product" key={product.sys.id}>
-        <div className="product__btn">Add To Bag</div>
+        <button className="button product__button">Add To Bag</button>
         <img
           className="product__img"
           src={product.fields.image.fields.file.url}
