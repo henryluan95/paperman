@@ -7,7 +7,7 @@ import React from "react";
 const About = () => {
   return (
     <>
-      <div className="about__line"></div>
+      <div className="line about__line"></div>
       <div className="about">
         <div className="about__us">
           <div className="about__us-img"></div>

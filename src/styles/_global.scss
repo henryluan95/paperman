@@ -1,0 +1,9 @@
+@use "../styles/variables" as *;
+
+.line {
+  height: 0.3rem;
+  width: 10rem;
+  border-radius: 10px;
+  background: $drk-pink;
+  margin-top: 1rem;
+}

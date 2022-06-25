@@ -11,7 +11,7 @@ const Trending = () => {
   return (
     <div className="trending">
       <h2 className="trending__title">Trending</h2>
-      <div className="trending__line"></div>
+      <div className="line trending__line"></div>
       <div className="trending__cards">
         {/*single card starts*/}
         <div className="card">

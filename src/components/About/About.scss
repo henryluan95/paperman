@@ -5,15 +5,11 @@
   @include tablet {
     @include flex-layout(row);
   }
-
   &__line {
     display: none;
     @include tablet {
       display: block;
-      height: 0.3rem;
       width: 20rem;
-      border-radius: 10px;
-      background: $drk-pink;
       margin: 0 auto 2rem auto;
     }
   }

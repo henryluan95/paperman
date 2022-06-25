@@ -50,7 +50,7 @@ const Sales = () => {
 
       <div className="sales__info">
         <h2 className="sales__title">DEAL OF THE WEEK</h2>
-        <div className="sales__line"></div>
+        <div className="line sales__line"></div>
         <p className="sales__text">Save up to 30% one week</p>
         <div className="countdown">
           <div className="countdown__box">
