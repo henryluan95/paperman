@@ -10,6 +10,10 @@
   z-index: 3;
   box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
 
+  @include tablet {
+    padding: 0.5rem 3rem;
+  }
+
   &-logo {
     @include link-reset;
     color: black;
@@ -22,9 +26,5 @@
   &-icon {
     transform: scale(1);
     margin-left: 0.5rem;
-  }
-
-  @include tablet {
-    padding: 0.5rem 3rem;
   }
 }

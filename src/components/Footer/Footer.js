@@ -2,12 +2,11 @@ import "./Footer.scss";
 
 const Footer = () => {
   return (
-    <div className="footer-container">
-      <p>
+    <div className="footer">
+      <p className="footer__copyright">
         copyright &copy; Henry Luan
-        <span id="date"></span>. all rights reserved
+        <span className="footer__date" id="date"></span>. all rights reserved
       </p>
-      <a href="http://www.freepik.com">Banner Image: Designed by Freepik</a>
     </div>
   );
 };

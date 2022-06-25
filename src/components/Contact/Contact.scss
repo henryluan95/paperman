@@ -13,7 +13,7 @@
 
   &__info {
     @include flex-layout(column, center, center);
-    border: 0.2rem solid $drk-blue;
+    border: 0.1rem solid $drk-blue;
     padding: 1rem;
     border-radius: 0.5rem;
   }
@@ -45,7 +45,7 @@
   }
 
   &__map {
-    border: 0.2rem solid $drk-blue;
+    border: 0.1rem solid $drk-blue;
     border-radius: 0.5rem;
     margin-top: 1rem;
     @include tablet {

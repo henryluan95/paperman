@@ -1,0 +1,16 @@
+@use "../../styles/variables" as *;
+
+.footer {
+  background: $drk-blue;
+  padding: 0.775rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__copyright,
+  &__date {
+    text-transform: capitalize;
+    color: white;
+  }
+}
