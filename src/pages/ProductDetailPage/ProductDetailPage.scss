@@ -1,0 +1,6 @@
+@use "../../styles/mixin" as *;
+@use "../../styles/variables" as *;
+
+.product-detail__page {
+  margin-top: $nav-height;
+}

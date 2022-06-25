@@ -2,7 +2,6 @@
 @use "../../styles/variables" as *;
 
 .product-detail {
-  margin-top: 2.75rem;
   padding-bottom: 2rem;
   color: $drk-blue;
   @include flex-layout(column, center, center);

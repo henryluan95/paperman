@@ -22,7 +22,7 @@ const Products = () => {
 
   return (
     <div className="products-wrapper">
-      <Categories />
+      {window.location.href === "http://localhost:3000/" && <Categories />}
       <div className="products">{productsElement}</div>
     </div>
   );

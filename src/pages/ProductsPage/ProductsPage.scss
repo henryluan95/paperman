@@ -1,0 +1,12 @@
+@use "../../styles/mixin" as *;
+@use "../../styles/variables" as *;
+
+.view {
+  margin-top: $nav-height;
+  padding: 1rem 3rem;
+  @include flex-layout(column, center, center);
+  @include tablet {
+    @include flex-layout(row, space-between, center);
+    padding: 2rem 3rem;
+  }
+}

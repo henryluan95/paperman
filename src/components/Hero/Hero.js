@@ -13,7 +13,9 @@ const Hero = () => {
           Our cases provide protection for your phone while presenting your
           fashion statement.
         </p>
-        <Link className="hero-cta">Shop Now</Link>
+        <Link to="/products" className="hero-cta">
+          Shop Now
+        </Link>
       </div>
     </section>
   );
