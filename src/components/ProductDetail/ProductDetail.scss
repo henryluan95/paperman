@@ -44,17 +44,11 @@
   }
 
   &__modals {
+    font-size: 1.2rem;
     @include flex-layout(column, center, center);
-  }
-
-  &__modal {
-    margin-top: 0.5rem;
-    outline: none;
-    border: 1px solid $drk-blue;
-    border-radius: 20px;
-    height: 2rem;
-    padding: 0 1rem;
-    color: $drk-blue;
+    @include tablet {
+      align-items: flex-start;
+    }
   }
 
   &__buttons {
@@ -82,13 +76,6 @@
   }
 
   &__promo-input {
-    margin-top: 0.5rem;
-    outline: none;
-    border: 1px solid $drk-blue;
-    border-radius: 20px;
-    height: 2rem;
-    padding: 0 1rem;
-
     &::placeholder {
       text-align: center;
       color: $drk-blue;

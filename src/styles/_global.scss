@@ -18,3 +18,13 @@
   border-radius: 1rem;
   border: 1px solid $drk-blue;
 }
+
+.input {
+  margin-top: 0.5rem;
+  outline: none;
+  border: 1px solid $drk-blue;
+  border-radius: 20px;
+  height: 2rem;
+  padding: 0 1rem;
+  color: $drk-blue;
+}

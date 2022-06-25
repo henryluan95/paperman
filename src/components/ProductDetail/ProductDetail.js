@@ -24,13 +24,18 @@ const ProductDetail = () => {
         <label className="product-detail__promo">
           Promo Code
           <input
-            className="product-detail__promo-input"
+            className="input product-detail__promo-input"
             type="text"
             placeholder="Enter Promo Code"
           />
         </label>
         <label className="product-detail__modals">
-          <select className="product-detail__modal" name="modal" id="modal">
+          Phone Modal
+          <select
+            className="input product-detail__modal"
+            name="modal"
+            id="modal"
+          >
             <option className="product-detail__modal-option" value="">
               --Please choose a phone modal--
             </option>
