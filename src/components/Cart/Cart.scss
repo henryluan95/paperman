@@ -2,25 +2,104 @@
 @use "../../styles/variables" as *;
 
 .cart {
+  @include flex-layout(column, flex-start, center);
   position: absolute;
   background-color: white;
   top: 2.5rem;
   //   left: -100%;
-  height: 100vh;
+  height: calc(100vh - 2.5rem);
   width: 100%;
-  @include transition;
   z-index: 1;
+  @include transition;
+
+  @include desktop {
+    max-width: 30vw;
+  }
 
   &--active {
     @include transition;
     left: 0;
   }
 
-  @include desktop {
-    max-width: 30vw;
+  &__title {
+    margin-top: 1rem;
+    font-size: 2rem;
+    font-weight: 400;
+    font-family: $title;
   }
 
-  &__product-img {
+  &__products {
+    padding: 1rem;
     width: 100%;
+  }
+
+  &__product {
+    @include flex-layout(row, space-between, stretch);
+
+    &-img {
+      width: 7rem;
+    }
+
+    &-title {
+      color: $drk-blue;
+    }
+
+    &-quantity {
+      border: 1px solid $drk-blue;
+      width: 100%;
+      border-radius: 0.5rem;
+      @include flex-layout(row, space-between, center);
+      padding: 0.1rem 0;
+    }
+
+    &-counter {
+      font-size: 0.85rem;
+    }
+
+    &-delete {
+      margin-left: 1.5rem;
+      background-color: $drk-pink;
+      border: none;
+      border-radius: 0.625rem;
+      color: white;
+      font-size: 0.85rem;
+    }
+
+    &-decrease,
+    &-increase {
+      background: none;
+      border: none;
+      padding: 0 1.2rem;
+      height: 100%;
+      cursor: pointer;
+    }
+  }
+
+  &__info {
+    @include flex-layout(column, space-between, center);
+  }
+
+  &__header {
+    @include flex-layout(row, space-between, flex-start);
+  }
+
+  &__total {
+    width: 100%;
+    font-size: 0.85rem;
+    color: $grey-blue;
+  }
+
+  &__checkout {
+    margin-top: auto;
+    background: $drk-blue;
+    padding: 0.8rem 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    width: 100%;
+    text-transform: uppercase;
+    @include link-reset;
   }
 }
