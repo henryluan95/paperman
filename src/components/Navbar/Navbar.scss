@@ -40,13 +40,15 @@
   }
 
   &__user-icon {
+    margin-right: 0.5rem;
+    transform: scale(1.1);
+
     &:active {
       color: $drk-blue;
     }
   }
 
   &__liked-icon {
-    margin-right: 0.5rem;
     color: black;
 
     &:active {

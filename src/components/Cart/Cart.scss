@@ -6,35 +6,43 @@
   position: absolute;
   background-color: white;
   top: 2.5rem;
-  //   left: -100%;
+  right: -100%;
   height: calc(100vh - 2.5rem);
   width: 100%;
   z-index: 1;
+
   @include transition;
 
   @include desktop {
-    max-width: 30vw;
+    max-width: 26vw;
   }
 
   &--active {
     @include transition;
-    left: 0;
+    right: 0;
   }
 
   &__title {
-    margin-top: 1rem;
+    margin: 1rem 0;
     font-size: 2rem;
     font-weight: 400;
     font-family: $title;
   }
 
   &__products {
-    padding: 1rem;
+    @include flex-layout(column, flex-start, center);
+    padding: 1rem 1rem 0 1rem;
     width: 100%;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   &__product {
     @include flex-layout(row, space-between, stretch);
+    margin-bottom: 1rem;
+    width: 100%;
 
     &-img {
       width: 7rem;
@@ -42,6 +50,10 @@
 
     &-title {
       color: $drk-blue;
+      width: 6rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     &-quantity {
@@ -58,11 +70,10 @@
 
     &-delete {
       margin-left: 1.5rem;
-      background-color: $drk-pink;
       border: none;
       border-radius: 0.625rem;
-      color: white;
-      font-size: 0.85rem;
+      color: $drk-blue;
+      transform: scale(0.7);
     }
 
     &-decrease,
@@ -73,24 +84,40 @@
       height: 100%;
       cursor: pointer;
     }
+
+    &-price {
+      width: 100%;
+      font-size: 0.85rem;
+      color: $grey-blue;
+    }
   }
 
   &__info {
     @include flex-layout(column, space-between, center);
+    width: 100%;
+    margin-left: 1rem;
   }
 
   &__header {
     @include flex-layout(row, space-between, flex-start);
+    width: 100%;
+  }
+
+  &__line {
+    min-height: 0.1rem;
+    margin: 0 0 1rem 0;
+    background-color: $grey-blue;
+    width: 100%;
   }
 
   &__total {
-    width: 100%;
-    font-size: 0.85rem;
-    color: $grey-blue;
+    margin-top: auto;
+    padding-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   &__checkout {
-    margin-top: auto;
+    margin-bottom: 1rem;
     background: $drk-blue;
     padding: 0.8rem 3rem;
     display: flex;
@@ -98,7 +125,7 @@
     align-items: center;
     justify-content: center;
     color: white;
-    width: 100%;
+    width: 90%;
     text-transform: uppercase;
     @include link-reset;
   }
