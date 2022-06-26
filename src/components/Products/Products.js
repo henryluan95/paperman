@@ -4,11 +4,11 @@ import React from "react";
 import Categories from "../Categories/Categories";
 
 const Products = () => {
-  //create product to displace
+  //create products to displace
   const productsElement = productsData.items.map((product) => {
     return (
       <div className="product" key={product.sys.id}>
-        <button className="button product__button">Add To Bag</button>
+        <button className="button product__button">View Product</button>
         <img
           className="product__img"
           src={product.fields.image.fields.file.url}

@@ -52,6 +52,7 @@
 
   &__buttons {
     @include flex-layout(row);
+    width: 100%;
     gap: 0.5rem;
   }
 
@@ -60,6 +61,7 @@
     width: 6rem;
     height: 2rem;
     background: rgba(255, 255, 255, 0.7);
+    width: 100%;
   }
 
   &__buttons-like {
@@ -75,6 +77,7 @@
   }
 
   &__promo-input {
+    min-width: 15.9rem;
     &::placeholder {
       text-align: center;
       color: $drk-blue;
