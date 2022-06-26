@@ -1,4 +1,5 @@
 @use "../../styles/mixin" as *;
+@use "../../styles/variables" as *;
 
 .navbar {
   padding: 0.5rem 1rem;
@@ -24,12 +25,32 @@
     color: black;
     text-transform: uppercase;
   }
+
   &-icons {
     @include flex-layout(row);
     cursor: pointer;
   }
-  &-icon {
-    transform: scale(1);
+
+  &__bag-icon {
     margin-left: 0.5rem;
+
+    &:active {
+      color: $drk-pink;
+    }
+  }
+
+  &__user-icon {
+    &:active {
+      color: $drk-blue;
+    }
+  }
+
+  &__liked-icon {
+    margin-right: 0.5rem;
+    color: black;
+
+    &:active {
+      color: $drk-pink;
+    }
   }
 }

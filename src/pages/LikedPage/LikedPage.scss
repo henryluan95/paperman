@@ -1,0 +1,28 @@
+@use "../../styles/mixin" as *;
+@use "../../styles/variables" as *;
+
+.liked-page {
+  margin-top: $nav-height;
+  @include flex-layout(column, center, center);
+}
+
+.liked {
+  @include flex-layout(column, center, center);
+
+  &__title {
+    margin-top: 1rem;
+    font-size: 3rem;
+    font-family: $text;
+    font-weight: 400;
+    color: $drk-blue;
+    text-align: center;
+  }
+
+  &__line {
+    margin-bottom: 1rem;
+
+    @include tablet {
+      margin-bottom: 2rem;
+    }
+  }
+}

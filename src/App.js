@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import ProductDetailPage from "./pages/ProductDetailPage/ProductDetailPage";
 import Footer from "./components/Footer/Footer";
 import ProductsPage from "./pages/ProductsPage/ProductsPage";
+import LikedPage from "./pages/LikedPage/LikedPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Switch>
         <Route path="/product/:productId" component={ProductDetailPage} />
         <Route path="/products" component={ProductsPage} />
+        <Route path="/liked" component={LikedPage} />
         <Route exact path="/" component={HomePage} />
       </Switch>
       <Footer />
