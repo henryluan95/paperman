@@ -24,7 +24,11 @@ const ProductsPage = () => {
         </label>
         {/* search */}
         <label className="view__search">
-          <input type="text" className="input" placeholder="Search" />
+          <input
+            type="text"
+            className="input view__search-input"
+            placeholder="Search"
+          />
         </label>
         {/* filter by modals */}
         <label className="view__modals">
@@ -57,6 +61,8 @@ const ProductsPage = () => {
           </select>
         </label>
       </div>
+      <h2 className="view__title">All Products</h2>
+      <div className="line view__line "></div>
       <Products />
     </div>
   );

@@ -1,10 +1,9 @@
 @use "../../styles/mixin" as *;
 
 .navbar {
-  @include flex-layout(row, space-between, center);
   padding: 0.5rem 1rem;
-  position: fixed;
   width: 100%;
+  position: fixed;
   top: 0;
   background-color: white;
   z-index: 3;
@@ -12,6 +11,12 @@
 
   @include tablet {
     padding: 0.5rem 3rem;
+  }
+
+  &__container {
+    margin: 0 auto;
+    @include flex-layout(row, space-between, center);
+    max-width: 80rem;
   }
 
   &-logo {

@@ -1,12 +1,44 @@
 @use "../../styles/mixin" as *;
 @use "../../styles/variables" as *;
 
-.view {
+.products-page {
   margin-top: $nav-height;
+  @include flex-layout(column, center, center);
+}
+
+.view {
   padding: 1rem 3rem;
+  width: 100%;
+  max-width: 80rem;
   @include flex-layout(column, center, center);
   @include tablet {
     @include flex-layout(row, space-between, center);
     padding: 2rem 3rem;
+  }
+
+  &__price-selection {
+    min-width: 15.9rem;
+  }
+
+  &__search-input {
+    min-width: 15.9rem;
+    &::placeholder {
+      text-align: center;
+    }
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-family: $text;
+    font-weight: 400;
+    color: $drk-blue;
+  }
+
+  &__line {
+    margin-bottom: 1rem;
+
+    @include tablet {
+      margin-bottom: 2rem;
+    }
   }
 }

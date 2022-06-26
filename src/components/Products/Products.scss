@@ -10,13 +10,12 @@
 
 .products {
   @include flex-layout(column, center, center);
+  margin-top: 1rem;
   gap: 2rem;
   padding: 0 1rem;
   @include tablet {
-    margin: 0 auto;
-  }
-  @include desktop {
     @include flex-layout(row, center);
+    margin-top: 0;
     flex-wrap: wrap;
   }
 }
@@ -28,7 +27,8 @@
   &__img {
     width: 100%;
     @include tablet {
-      max-width: 32rem;
+      // max-width: 32rem;
+      max-width: 20rem;
     }
     @include desktop {
       max-width: 20rem;

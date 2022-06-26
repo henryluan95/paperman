@@ -19,17 +19,19 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <Login isLoginClicked={isLoginClicked} />
-      <Link to="/" className="navbar-logo" onClick={handleLogoClicked}>
-        Paperman
-      </Link>
-      <div className="navbar-icons">
-        <div>
-          <PersonOutlineIcon
-            className="navbar-icon"
-            onClick={handleLoginPage}
-          />
+      <div className="navbar__container">
+        <Link to="/" className="navbar-logo" onClick={handleLogoClicked}>
+          Paperman
+        </Link>
+        <div className="navbar-icons">
+          <div>
+            <PersonOutlineIcon
+              className="navbar-icon"
+              onClick={handleLoginPage}
+            />
+          </div>
+          <ShoppingBagOutlinedIcon className="navbar-icon" />
         </div>
-        <ShoppingBagOutlinedIcon className="navbar-icon" />
       </div>
     </nav>
   );
