@@ -1,7 +1,5 @@
 import "./Login.scss";
 
-import React from "react";
-
 const Login = ({ isLoginClicked }) => {
   return (
     <div className={`login ${isLoginClicked ? "login--active" : ""} `}>

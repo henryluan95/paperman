@@ -6,10 +6,12 @@ import Vouchers from "../../components/Vouchers/Vouchers";
 import Sales from "../../components/Sales/Sales";
 import Products from "../../components/Products/Products";
 import Contact from "../../components/Contact/Contact";
+import Cart from "../../components/Cart/Cart";
 
 const HomePage = () => {
   return (
     <>
+      <Cart />
       <Hero />
       <Vouchers />
       <Trending />
