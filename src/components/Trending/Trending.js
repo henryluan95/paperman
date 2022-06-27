@@ -1,5 +1,6 @@
 import "./Trending.scss";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Trending = () => {
   return (
@@ -10,7 +11,12 @@ const Trending = () => {
         {/*single card starts*/}
         <div className="card">
           <div className="card__img-wrapper">
-            <div className="card__purchase-btn">View Product</div>
+            <Link
+              to="/product/HIMA4Dp60FPt03B74ZCR"
+              className="card__purchase-btn"
+            >
+              View Product
+            </Link>
             <img
               className="card__trending-img"
               src="https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/case1.jpg?alt=media&token=002d91c8-e962-4d78-8aaa-6cdcaec20a31"
@@ -31,7 +37,12 @@ const Trending = () => {
         {/*single card starts*/}
         <div className="card">
           <div className="card__img-wrapper">
-            <div className="card__purchase-btn">View Product</div>
+            <Link
+              to="/product/bilbJA3sn6fkZYjOpAdG"
+              className="card__purchase-btn"
+            >
+              View Product
+            </Link>
             <img
               className="card__trending-img"
               src="https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/case2.jpg?alt=media&token=c48c56e1-02ec-4644-992d-7fcc94a9ee75"
@@ -52,7 +63,12 @@ const Trending = () => {
         {/*single card starts*/}
         <div className="card">
           <div className="card__img-wrapper">
-            <div className="card__purchase-btn">View Product</div>
+            <Link
+              to="/product/GPCrvxAVyL9fQFgzKlTP"
+              className="card__purchase-btn"
+            >
+              View Product
+            </Link>
             <img
               className="card__trending-img"
               src="https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/case3.jpg?alt=media&token=5f2614ab-41ad-4cda-9d10-f3c4c5a3ecde"

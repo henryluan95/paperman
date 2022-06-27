@@ -8,7 +8,7 @@ const Sales = () => {
   const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth();
   const currentDay = currentDate.getDate();
-  const futureDate = new Date(currentYear, currentMonth, currentDay + 7, 0, 0);
+  const futureDate = new Date(currentYear, currentMonth, currentDay + 2, 0, 0);
 
   //calculate time distance
   function getRemainingTime() {

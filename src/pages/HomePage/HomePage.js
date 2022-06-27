@@ -20,7 +20,9 @@ const HomePage = () => {
       snapshot.docs.forEach((doc) =>
         fetchedProducts.push({ ...doc.data(), id: doc.id })
       );
-      setProducts(fetchedProducts);
+      console.log(fetchedProducts);
+      //sort data and setProducts
+      setProducts(fetchedProducts.sort((a, b) => (a.title - b.title ? 1 : -1)));
       setLoading(false);
     });
 

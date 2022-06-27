@@ -55,6 +55,7 @@
   }
 
   &__purchase-btn {
+    @include link-reset;
     width: 10rem;
     position: absolute;
     top: 50%;
@@ -69,6 +70,7 @@
     font-weight: 400;
     opacity: 0;
     z-index: 2;
+    color: $drk-blue;
     @include transition;
   }
 
