@@ -1,6 +1,5 @@
-import { DockTwoTone } from "@mui/icons-material";
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, onSnapshot } from "firebase/firestore";
+import { getFirestore, collection } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCmj_L5C25aJLp7t41zhyjH2WFuHWgV3n8",
