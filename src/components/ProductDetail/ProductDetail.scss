@@ -66,6 +66,11 @@
 
   &__buttons-like {
     border: 1px solid $drk-pink;
+
+    &--liked {
+      background-color: $drk-pink;
+      color: white;
+    }
   }
 
   &__promo {

@@ -1,11 +1,22 @@
 import "./ProductDetail.scss";
-import salesImage from "../../assets/images/sales-image.jpg";
+import { db } from "../../firebase";
+import { onSnapshot, getDoc, doc, updateDoc } from "firebase/firestore";
+import { useEffect, useState } from "react";
 
 import React from "react";
 
 const ProductDetail = ({ product }) => {
+  // const [isLiked, setIsLiked] = useState(product.isLiked);
   //get all the modals that is available for this product
   const modals = [...new Set(product.modals?.map((modal) => modal))];
+
+  //Create a function to update like
+  const updateProduct = () => {
+    const docRef = doc(db, "products", product.id);
+    updateDoc(docRef, {
+      isLiked: !product.isLiked,
+    });
+  };
 
   return (
     <div className="product-detail">
@@ -19,7 +30,14 @@ const ProductDetail = ({ product }) => {
         <span className="product-detail__price">${product.price}</span>
 
         <div className="product-detail__buttons">
-          <button className="button product-detail__buttons-like">Like</button>
+          <button
+            className={`button product-detail__buttons-like ${
+              product.isLiked ? "product-detail__buttons-like--liked" : ""
+            } `}
+            onClick={updateProduct}
+          >
+            {product.isLiked ? "Liked" : "Like"}
+          </button>
           <button className="button product-detail__buttons-add">
             Add to Cart
           </button>
@@ -44,7 +62,11 @@ const ProductDetail = ({ product }) => {
             </option>
             {/* map through all modals variable created above to create options */}
             {modals.map((modal) => (
-              <option className="product-detail__modal-option" value={modal}>
+              <option
+                className="product-detail__modal-option"
+                value={modal}
+                key={modal}
+              >
                 {modal}
               </option>
             ))}
