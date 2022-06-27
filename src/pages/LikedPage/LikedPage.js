@@ -2,32 +2,13 @@ import "./LikedPage.scss";
 import { useState, useEffect } from "react";
 import Products from "../../components/Products/Products";
 import { productsColRef } from "../../firebase";
-import { onSnapshot, where, query } from "firebase/firestore";
+import { where, query } from "firebase/firestore";
+import useCollection from "../../hooks/useCollection";
 
 const LikedPage = () => {
-  const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState([]);
-
-  //create a function to query
-  const getProducts = () => {
-    //query data to get only liked product
-    const likedQuery = query(productsColRef, where("isLiked", "==", true));
-
-    //get all data that are queried
-    onSnapshot(likedQuery, (snapshot) => {
-      const fetchedProducts = [];
-      snapshot.docs.forEach((doc) =>
-        fetchedProducts.push({ ...doc.data(), id: doc.id })
-      );
-      setProducts(fetchedProducts);
-      setLoading(false);
-    });
-  };
-
-  //get all liked products on load
-  useEffect(() => {
-    getProducts();
-  }, []);
+  //query data to get only liked product
+  const likedQuery = query(productsColRef, where("isLiked", "==", true));
+  const { products, loading } = useCollection(likedQuery);
 
   if (loading) {
     return <h1>Hi</h1>;

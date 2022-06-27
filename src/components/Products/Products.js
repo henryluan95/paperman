@@ -1,9 +1,13 @@
 import "./Products.scss";
 import { Link } from "react-router-dom";
 import Categories from "../Categories/Categories";
+import { useLocation } from "react-router-dom";
 
 const Products = ({ products }) => {
-  //create products to displace
+  //get Products component current url to display/not display Categories section
+  const location = useLocation();
+
+  //create products to display
   const productsElement = products.map((product) => {
     return (
       <div className="product" key={product.id}>
@@ -19,7 +23,7 @@ const Products = ({ products }) => {
 
   return (
     <div className="products-wrapper">
-      {window.location.href === "http://localhost:3000/" && <Categories />}
+      {location.pathname === "/" && <Categories />}
       <div className="products">{productsElement}</div>
     </div>
   );

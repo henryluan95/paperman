@@ -7,32 +7,13 @@ import Sales from "../../components/Sales/Sales";
 import Products from "../../components/Products/Products";
 import Contact from "../../components/Contact/Contact";
 import { productsColRef } from "../../firebase";
-import { onSnapshot } from "firebase/firestore";
+import useCollection from "../../hooks/useCollection";
 
 const HomePage = () => {
-  const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState([]);
-
-  //create a function to get all products
-  const getProducts = () =>
-    onSnapshot(productsColRef, (snapshot) => {
-      const fetchedProducts = [];
-      snapshot.docs.forEach((doc) =>
-        fetchedProducts.push({ ...doc.data(), id: doc.id })
-      );
-      //sort data and setProducts
-      setProducts(fetchedProducts.sort((a, b) => (a.title - b.title ? 1 : -1)));
-      setLoading(false);
-    });
-
-  //get all products on load
-  useEffect(() => {
-    getProducts();
-  }, []);
-
-  if (loading) {
-    return <h1>Hi</h1>;
-  }
+  const { products, loading } = useCollection(productsColRef);
+  // if (loading) {
+  //   return <h1>Hi</h1>;
+  // }
 
   return (
     <>

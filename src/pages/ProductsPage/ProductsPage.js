@@ -2,27 +2,10 @@ import "./ProductsPage.scss";
 import React, { useEffect, useState } from "react";
 import Products from "../../components/Products/Products";
 import { productsColRef } from "../../firebase";
-import { onSnapshot } from "firebase/firestore";
+import useCollection from "../../hooks/useCollection";
 
 const ProductsPage = () => {
-  const [loading, setLoading] = useState(true);
-  const [products, setProducts] = useState([]);
-
-  //create a function to get all products
-  const getProducts = () =>
-    onSnapshot(productsColRef, (snapshot) => {
-      const fetchedProducts = [];
-      snapshot.docs.forEach((doc) =>
-        fetchedProducts.push({ ...doc.data(), id: doc.id })
-      );
-      setProducts(fetchedProducts);
-      setLoading(false);
-    });
-
-  //get all products on load
-  useEffect(() => {
-    getProducts();
-  }, []);
+  const { products, loading } = useCollection(productsColRef);
 
   if (loading) {
     return <h1>Hi</h1>;
