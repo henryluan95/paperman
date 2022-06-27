@@ -1,6 +1,4 @@
 import "./About.scss";
-import aboutUsImage1 from "../../assets/images/case44.jpg";
-import aboutUsImage2 from "../../assets/images/case55.jpg";
 
 import React from "react";
 

@@ -1,21 +1,18 @@
 import "./Products.scss";
-import productsData from "../../data/products.json";
-import React from "react";
+import { Link } from "react-router-dom";
 import Categories from "../Categories/Categories";
 
-const Products = () => {
+const Products = ({ products }) => {
   //create products to displace
-  const productsElement = productsData.items.map((product) => {
+  const productsElement = products.map((product) => {
     return (
-      <div className="product" key={product.sys.id}>
-        <button className="button product__button">View Product</button>
-        <img
-          className="product__img"
-          src={product.fields.image.fields.file.url}
-          alt="case"
-        />
-        <h3 className="product__title">{product.fields.title}</h3>
-        <span className="product__price">{product.fields.price}</span>
+      <div className="product" key={product.id}>
+        <Link to={`/product/${product.id}`} className="button product__button">
+          View Product
+        </Link>
+        <img className="product__img" src={product.image} alt="case" />
+        <h3 className="product__title">{product.title}</h3>
+        <span className="product__price">${product.price}</span>
       </div>
     );
   });

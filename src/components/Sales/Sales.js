@@ -1,5 +1,4 @@
 import "./Sales.scss";
-import salesImage from "../../assets/images/sales-image.jpg";
 
 import React, { useEffect, useState } from "react";
 
@@ -46,7 +45,11 @@ const Sales = () => {
 
   return (
     <section className="sales">
-      <img className="sales__img" src={salesImage} alt="sale" />
+      <img
+        className="sales__img"
+        src="https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/sales-image.jpg?alt=media&token=2c1b97e9-b802-4e94-a643-da3a687b0f9f"
+        alt="sale"
+      />
 
       <div className="sales__info">
         <h2 className="sales__title">DEAL OF THE WEEK</h2>

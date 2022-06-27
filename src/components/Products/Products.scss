@@ -36,6 +36,8 @@
   }
 
   &__button {
+    @include link-reset;
+    color: $drk-blue;
     width: 8rem;
     position: absolute;
     top: 50%;

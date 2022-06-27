@@ -23,7 +23,7 @@
   &__us-img {
     min-height: 10rem;
     width: 100%;
-    background-image: url("../../assets/images/case44.jpg");
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/case44.jpg?alt=media&token=3ca5dec1-855c-4853-b55b-f4b87746b7ee");
     background-size: cover;
     background-position: 0% 48%;
     @include tablet {
@@ -34,7 +34,7 @@
 
   &__products-img {
     @extend .about__us-img;
-    background-image: url("../../assets/images/case33.jpg");
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/case33.jpg?alt=media&token=a7c3b0ab-feb1-4133-8630-4dc4b6357980");
     background-position: 0% 50%;
   }
 

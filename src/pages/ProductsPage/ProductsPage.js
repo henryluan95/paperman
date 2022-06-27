@@ -1,9 +1,33 @@
 import "./ProductsPage.scss";
-
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Products from "../../components/Products/Products";
+import { productsColRef } from "../../firebase";
+import { onSnapshot } from "firebase/firestore";
 
 const ProductsPage = () => {
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState([]);
+
+  //create a function to get all products
+  const getProducts = () =>
+    onSnapshot(productsColRef, (snapshot) => {
+      const fetchedProducts = [];
+      snapshot.docs.forEach((doc) =>
+        fetchedProducts.push({ ...doc.data(), id: doc.id })
+      );
+      setProducts(fetchedProducts);
+      setLoading(false);
+    });
+
+  //get all products on load
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  if (loading) {
+    return <h1>Hi</h1>;
+  }
+
   return (
     <div className="products-page">
       <div className="view">
@@ -63,7 +87,7 @@ const ProductsPage = () => {
       </div>
       <h2 className="view__title">All Products</h2>
       <div className="line view__line "></div>
-      <Products />
+      <Products products={products} />
     </div>
   );
 };

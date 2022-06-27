@@ -1,11 +1,5 @@
 import "./Trending.scss";
 import React from "react";
-import trendingImage1 from "../../assets/images/case1.jpg";
-import trendingImage2 from "../../assets/images/case2.jpg";
-import trendingImage3 from "../../assets/images/case3.jpg";
-import trendingImage11 from "../../assets/images/case11.jpg";
-import trendingImage22 from "../../assets/images/case22.jpg";
-import trendingImage33 from "../../assets/images/case33.jpg";
 
 const Trending = () => {
   return (
@@ -19,12 +13,12 @@ const Trending = () => {
             <div className="card__purchase-btn">View Product</div>
             <img
               className="card__trending-img"
-              src={trendingImage1}
+              src="https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/case1.jpg?alt=media&token=002d91c8-e962-4d78-8aaa-6cdcaec20a31"
               alt="case pic"
             />
             <img
               className="card__trending-img card__trending-img--hover"
-              src={trendingImage11}
+              src="https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/case11.jpg?alt=media&token=21eb3664-55f6-4b83-954d-43523aa6f4e4"
               alt="case pic"
             />
           </div>
@@ -40,12 +34,12 @@ const Trending = () => {
             <div className="card__purchase-btn">View Product</div>
             <img
               className="card__trending-img"
-              src={trendingImage2}
+              src="https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/case2.jpg?alt=media&token=c48c56e1-02ec-4644-992d-7fcc94a9ee75"
               alt="case pic"
             />
             <img
               className="card__trending-img card__trending-img--hover"
-              src={trendingImage22}
+              src="https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/case22.jpg?alt=media&token=234f262c-eb2d-41b0-aed5-71d4b3a22947"
               alt="case pic"
             />
           </div>
@@ -61,12 +55,12 @@ const Trending = () => {
             <div className="card__purchase-btn">View Product</div>
             <img
               className="card__trending-img"
-              src={trendingImage3}
+              src="https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/case3.jpg?alt=media&token=5f2614ab-41ad-4cda-9d10-f3c4c5a3ecde"
               alt="case pic"
             />
             <img
               className="card__trending-img card__trending-img--hover"
-              src={trendingImage33}
+              src="https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/case33.jpg?alt=media&token=a7c3b0ab-feb1-4133-8630-4dc4b6357980"
               alt="case pic"
             />
           </div>
