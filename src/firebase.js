@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCmj_L5C25aJLp7t41zhyjH2WFuHWgV3n8",
@@ -15,6 +16,9 @@ initializeApp(firebaseConfig);
 
 //get database
 export const db = getFirestore();
+
+//get auth
+export const auth = getAuth();
 
 //get collection ref
 export const productsColRef = collection(db, "products");

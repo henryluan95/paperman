@@ -1,12 +1,10 @@
 import "./ProductDetail.scss";
 import { db } from "../../firebase";
-import { onSnapshot, getDoc, doc, updateDoc } from "firebase/firestore";
-import { useEffect, useState } from "react";
+import { doc, updateDoc } from "firebase/firestore";
 
 import React from "react";
 
 const ProductDetail = ({ product }) => {
-  // const [isLiked, setIsLiked] = useState(product.isLiked);
   //get all the modals that is available for this product
   const modals = [...new Set(product.modals?.map((modal) => modal))];
 

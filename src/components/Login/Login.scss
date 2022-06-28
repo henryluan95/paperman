@@ -39,9 +39,21 @@
   }
 }
 
-.sign-in {
+.sign-in,
+.sign-up {
   @include flex-layout(column, center, center);
   gap: 1rem;
+  font-size: 1.8rem;
+  font-weight: 400;
+  font-family: $title;
+  background: none;
+  border: none;
+
+  &__label {
+    font-size: 1rem;
+    @include flex-layout(row, space-between, center);
+    width: 100%;
+  }
 
   &__input {
     margin-left: 0.5rem;
@@ -51,20 +63,29 @@
     border: 1px solid black;
     border-radius: 1rem;
     font-family: inherit;
+    width: 12rem;
+    outline: none;
+  }
+
+  &__title {
+    font-weight: 400;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+
+  &__submit {
+    background-color: $drk-blue;
+    color: white;
+    min-width: 8rem;
   }
 }
 
-.sign-in__title,
-.sign-up {
-  font-size: 2rem;
-  font-weight: 400;
-  font-family: $title;
-}
-
-.sign-up {
+.sign-up,
+.sign-in {
   position: relative;
   text-align: center;
   cursor: pointer;
+
   &::before {
     content: attr(data-text);
     position: absolute;
