@@ -90,6 +90,10 @@
       font-size: 0.85rem;
       color: $grey-blue;
     }
+
+    &-modal {
+      @extend .cart__product-price;
+    }
   }
 
   &__info {

@@ -20,5 +20,8 @@ export const db = getFirestore();
 //get auth
 export const auth = getAuth();
 
+//get an user
+export const user = auth.currentUser;
+
 //get collection ref
 export const productsColRef = collection(db, "products");

@@ -1,0 +1,34 @@
+@use "../../styles/mixin" as *;
+@use "../../styles/variables" as *;
+
+.spinner {
+  height: 100vh;
+
+  &__circle {
+    height: 6rem;
+    width: 6rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(0);
+    border: 0.5rem solid $drk-pink;
+    border-top-color: $drk-blue;
+    border-radius: 50%;
+    animation: spin 1.5s infinite linear;
+
+    &2 {
+      @extend .spinner__circle;
+      height: 4rem;
+      width: 4rem;
+      border: 0.5rem solid $drk-blue;
+      border-top-color: $drk-pink;
+      animation: spin 10s infinite linear;
+    }
+  }
+}
+
+@keyframes spin {
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

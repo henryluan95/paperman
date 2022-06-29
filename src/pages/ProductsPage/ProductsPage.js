@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import Products from "../../components/Products/Products";
 import { productsColRef } from "../../firebase";
 import useCollection from "../../hooks/useCollection";
+import Loader from "../../components/Loader/Loader";
 
 const ProductsPage = () => {
   const { products, loading } = useCollection(productsColRef);
 
   if (loading) {
-    return <h1>Hi</h1>;
+    return <Loader />;
   }
 
   return (

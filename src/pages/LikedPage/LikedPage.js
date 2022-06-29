@@ -1,9 +1,9 @@
 import "./LikedPage.scss";
-import { useState, useEffect } from "react";
 import Products from "../../components/Products/Products";
 import { productsColRef } from "../../firebase";
 import { where, query } from "firebase/firestore";
 import useCollection from "../../hooks/useCollection";
+import Loader from "../../components/Loader/Loader";
 
 const LikedPage = () => {
   //query data to get only liked product
@@ -11,7 +11,7 @@ const LikedPage = () => {
   const { products, loading } = useCollection(likedQuery);
 
   if (loading) {
-    return <h1>Hi</h1>;
+    return <Loader />;
   }
 
   return (

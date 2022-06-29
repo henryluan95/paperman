@@ -1,22 +1,30 @@
 import "./Cart.scss";
 import { Link } from "react-router-dom";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
-import getCurrentCart from "../../util/getCurrentCart";
 import decreaseQuantity from "../../util/decreaseQuantity";
 import setCart from "../../util/setCart";
+import { useContext, useEffect, useState } from "react";
+import { ProductsContext } from "../../App";
 
-const Cart = ({ isCartClicked }) => {
-  const currentCart = getCurrentCart();
+const Cart = ({ isCartClicked, removeProduct, addProduct }) => {
+  const products = useContext(ProductsContext);
+
+  //create a function to get total of all products
+  const getTotal = (products) => {
+    let total = 0;
+    products.forEach((product) => {
+      total += product.price * product.quantity;
+    });
+    return total;
+  };
 
   //create a function to decrease quantity of a product in cart
   const handleDecreaseQuantity = (product) => {
-    const updatedCart = decreaseQuantity(currentCart, product);
-    console.log(currentCart);
-    console.log(updatedCart);
+    const updatedCart = decreaseQuantity(products, product);
     setCart(updatedCart);
   };
 
-  const productsInCart = currentCart.map((product) => {
+  const productsInCart = products.map((product) => {
     return (
       <>
         <div className="cart__product">
@@ -34,13 +42,19 @@ const Cart = ({ isCartClicked }) => {
             <div className="cart__product-quantity">
               <button
                 className="cart__product-decrease"
-                onClick={() => handleDecreaseQuantity(product)}
+                onClick={() => removeProduct(product)}
               >
                 -
               </button>
               <span className="cart__product-counter">{product.quantity}</span>
-              <button className="cart__product-increase">+</button>
+              <button
+                className="cart__product-increase"
+                onClick={() => addProduct(product)}
+              >
+                +
+              </button>
             </div>
+            <p className="cart__product-modal">Modal: {product.modals}</p>
             <p className="cart__product-price">{product.price}</p>
           </div>
         </div>
@@ -53,7 +67,7 @@ const Cart = ({ isCartClicked }) => {
     <div className={`cart ${isCartClicked ? "cart--active" : ""} `}>
       <h4 className="cart__title">Your Cart</h4>
       <div className="cart__products">{productsInCart}</div>
-      <p className="cart__total">Total: $9.99</p>
+      <p className="cart__total">Total: ${getTotal(products)}</p>
       <Link to="#" className="cart__checkout">
         Check Out
       </Link>

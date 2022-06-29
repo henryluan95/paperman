@@ -1,6 +1,6 @@
 const getCurrentCart = () => {
-  const getCurrentCart = localStorage.getItem("cart");
-  return JSON.parse(getCurrentCart);
+  const currentCart = localStorage.getItem("cart");
+  return JSON.parse(currentCart) || [];
 };
 
 export default getCurrentCart;

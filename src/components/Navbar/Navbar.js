@@ -2,12 +2,15 @@ import "./Navbar.scss";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Login from "../../components/Login/Login";
 import Cart from "../../components/Cart/Cart";
+import { ProductsContext } from "../../App";
 
-const Navbar = () => {
+const Navbar = ({ removeProduct, addProduct }) => {
+  const products = useContext(ProductsContext);
+
   const [isLoginClicked, setIsLoginClicked] = useState(false);
   const [isCartClicked, setIsCartClicked] = useState(false);
 
@@ -32,7 +35,11 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <Login isLoginClicked={isLoginClicked} />
-      <Cart isCartClicked={isCartClicked} />
+      <Cart
+        isCartClicked={isCartClicked}
+        removeProduct={removeProduct}
+        addProduct={addProduct}
+      />
       <div className="navbar__container">
         <Link to="/" className="navbar-logo" onClick={handleLogoClicked}>
           Paperman

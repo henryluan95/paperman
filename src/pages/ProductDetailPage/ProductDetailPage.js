@@ -5,9 +5,11 @@ import About from "../../components/About/About";
 import { db } from "../../firebase";
 import { onSnapshot, getDoc, doc } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import Loader from "../../components/Loader/Loader";
 
-const ProductDetailPage = () => {
+const ProductDetailPage = ({ addProduct }) => {
   const [product, setProduct] = useState({});
+  const [loading, setLoading] = useState(true);
 
   //get product id from params
   const { productId } = useParams();
@@ -21,11 +23,16 @@ const ProductDetailPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     getProduct();
+    setLoading(false);
   }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className="product-detail__page">
-      <ProductDetail product={product} />
+      <ProductDetail product={product} addProduct={addProduct} />
       <About />
     </div>
   );

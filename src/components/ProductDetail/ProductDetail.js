@@ -6,8 +6,8 @@ import getCurrentCart from "../../util/getCurrentCart";
 import setCart from "../../util/setCart";
 import increaseQuantity from "../../util/increaseQuantity";
 
-const ProductDetail = ({ product }) => {
-  const [modalSelected, setModalSelected] = useState("");
+const ProductDetail = ({ product, addProduct, removeProduct }) => {
+  const [selectedModal, setSelectedModal] = useState("");
   //get all the modals that is available for this product
   const modals = [...new Set(product.modals?.map((modal) => modal))];
 
@@ -21,63 +21,7 @@ const ProductDetail = ({ product }) => {
 
   //Create a function to keep track of selected modal
   const handleModalSelect = (e) => {
-    setModalSelected(e.target.value);
-  };
-
-  //Create a function to see if product is already in cart
-  const isInCart = (product) => {
-    //get current cart
-    const currentCart = getCurrentCart();
-    //find product in cart
-    const foundProductInCart = currentCart.find(
-      (productInCart) => productInCart.id === product.id
-    );
-    if (foundProductInCart) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  //Create a function to add new item to card
-  const addProduct = (product) => {
-    //Create new item to add to card
-    const newProduct = {
-      title: product.title,
-      price: product.price,
-      image: product.image,
-      id: product.id,
-      quantity: 1,
-      modals: modalSelected,
-    };
-
-    const cart = localStorage.getItem("cart");
-    //check if cart is in local storage
-    //if no cart
-    //create cart and add product
-    if (cart === null) {
-      setCart([newProduct]);
-    }
-    //if there is cart
-    //check if product is already in cart
-    //if product isn't in cart, add product to cart
-    else if (!isInCart(product)) {
-      //get all products in cart
-      const currentCart = getCurrentCart();
-      //then push new product in
-      currentCart.push(newProduct);
-      //then save cart
-      setCart(currentCart);
-    }
-    //if product is in cart
-    else if (isInCart(product)) {
-      //get all products in cart
-      const currentCart = getCurrentCart();
-      //create new cart
-      const updatedCart = increaseQuantity(currentCart, product);
-      //set cart to local storage
-      setCart(updatedCart);
-    }
+    setSelectedModal(e.target.value);
   };
 
   return (
@@ -102,7 +46,7 @@ const ProductDetail = ({ product }) => {
           </button>
           <button
             className="button product-detail__buttons-add"
-            onClick={() => addProduct(product)}
+            onClick={() => addProduct(product, selectedModal)}
           >
             Add to Cart
           </button>

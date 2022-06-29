@@ -6,14 +6,15 @@ import Vouchers from "../../components/Vouchers/Vouchers";
 import Sales from "../../components/Sales/Sales";
 import Products from "../../components/Products/Products";
 import Contact from "../../components/Contact/Contact";
+import Loader from "../../components/Loader/Loader";
 import { productsColRef } from "../../firebase";
 import useCollection from "../../hooks/useCollection";
 
 const HomePage = () => {
   const { products, loading } = useCollection(productsColRef);
-  // if (loading) {
-  //   return <h1>Hi</h1>;
-  // }
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <>
