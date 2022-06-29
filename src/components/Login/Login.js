@@ -1,12 +1,32 @@
 import { useState } from "react";
-import { auth } from "../../firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, user } from "../../firebase";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  updateProfile,
+} from "firebase/auth";
 import "./Login.scss";
 
 const Login = ({ isLoginClicked }) => {
   //Check if we are on sign in page
   const [isSignIn, setIsSignIn] = useState(true);
-  const [user, setUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  //keep track of user
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      updateProfile(auth.currentUser, {
+        displayName: "Henry",
+      })
+        .then(() => {
+          setCurrentUser(auth.currentUser);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else {
+    }
+  });
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -21,13 +41,20 @@ const Login = ({ isLoginClicked }) => {
 
     createUserWithEmailAndPassword(auth, username, password)
       .then((cred) => {
-        setUser(cred.user);
+        setCurrentUser(cred.user);
       })
       .catch((err) => console.log(err.message));
   };
 
   //create a signed in element
-  const singedInElement = <h1>Hello {user?.email}</h1>;
+  const singedInElement = () => {
+    return (
+      <>
+        <h1>Signed In</h1>
+        <button className="button sign-out__button">Sign Out</button>
+      </>
+    );
+  };
 
   //create a sign in element
   const signInElement = isSignIn ? (
@@ -100,7 +127,9 @@ const Login = ({ isLoginClicked }) => {
 
   return (
     <div className={`login ${isLoginClicked ? "login--active" : ""} `}>
-      <ul className="login__items">{user ? singedInElement : signInElement}</ul>
+      <ul className="login__items">
+        {currentUser ? singedInElement() : signInElement}
+      </ul>
     </div>
   );
 };
