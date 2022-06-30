@@ -38,6 +38,8 @@ function App() {
 
   //Create a function to add product
   const addProduct = (selectedProduct, selectedModal) => {
+    if (selectedModal === "") return;
+
     //Create new item to add to card
     const newProduct = {
       title: selectedProduct.title,

@@ -5,6 +5,7 @@ import { useState } from "react";
 
 const ProductDetail = ({ product, addProduct }) => {
   const [selectedModal, setSelectedModal] = useState("");
+  const [modalSelectionError, setModalSelectionError] = useState(false);
   //get all the modals that is available for this product
   const modals = [...new Set(product.modals?.map((modal) => modal))];
 
@@ -20,6 +21,16 @@ const ProductDetail = ({ product, addProduct }) => {
   const handleModalSelect = (e) => {
     setSelectedModal(e.target.value);
   };
+
+  //Create a function to validate model select
+  const isModalSelected = () => {
+    if (!selectedModal) {
+      return setModalSelectionError(true);
+    }
+    return setModalSelectionError(false);
+  };
+
+  console.log(selectedModal);
 
   return (
     <div className="product-detail">
@@ -58,7 +69,7 @@ const ProductDetail = ({ product, addProduct }) => {
             onChange={handleModalSelect}
           >
             <option className="product-detail__modal-option" value="">
-              --Please choose a phone modal--
+              --Please choose a phone model--
             </option>
             {/* map through all modals variable created above to create options */}
             {modals.map((modal) => (
@@ -71,10 +82,16 @@ const ProductDetail = ({ product, addProduct }) => {
               </option>
             ))}
           </select>
+          {modalSelectionError && (
+            <span className="selection-error">Please select a model</span>
+          )}
         </label>
         <button
           className="button product-detail__buttons-add"
-          onClick={() => addProduct(product, selectedModal)}
+          onClick={() => {
+            addProduct(product, selectedModal);
+            isModalSelected();
+          }}
         >
           Add to Cart
         </button>
