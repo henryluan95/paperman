@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import decreaseQuantity from "../../util/decreaseQuantity";
 import setCart from "../../util/setCart";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { ProductsContext } from "../../App";
 
-const Cart = ({ isCartClicked, removeProduct, addProduct }) => {
-  const products = useContext(ProductsContext);
+const Cart = ({ isCartClicked, reduceProduct, addProduct, deleteProduct }) => {
+  const cart = useContext(ProductsContext);
 
   //create a function to get total of all products
   const getTotal = (products) => {
@@ -15,19 +15,19 @@ const Cart = ({ isCartClicked, removeProduct, addProduct }) => {
     products.forEach((product) => {
       total += product.price * product.quantity;
     });
-    return total;
+    return total.toFixed(2);
   };
 
   //create a function to decrease quantity of a product in cart
   const handleDecreaseQuantity = (product) => {
-    const updatedCart = decreaseQuantity(products, product);
+    const updatedCart = decreaseQuantity(cart, product);
     setCart(updatedCart);
   };
 
-  const productsInCart = products.map((product) => {
+  const productsInCart = cart.map((product) => {
     return (
       <>
-        <div className="cart__product">
+        <div className="cart__product" key={product.id}>
           <img
             className="cart__product-img"
             src={product.image}
@@ -36,20 +36,23 @@ const Cart = ({ isCartClicked, removeProduct, addProduct }) => {
           <div className="cart__info">
             <div className="cart__header">
               <p className="cart__product-title">{product.title}</p>
-              <RemoveCircleOutlineIcon className="cart__product-delete" />
+              <RemoveCircleOutlineIcon
+                className="cart__product-delete"
+                onClick={() => deleteProduct(product, product.modals)}
+              />
             </div>
 
             <div className="cart__product-quantity">
               <button
                 className="cart__product-decrease"
-                onClick={() => removeProduct(product)}
+                onClick={() => reduceProduct(product, product.modals)}
               >
                 -
               </button>
               <span className="cart__product-counter">{product.quantity}</span>
               <button
                 className="cart__product-increase"
-                onClick={() => addProduct(product)}
+                onClick={() => addProduct(product, product.modals)}
               >
                 +
               </button>
@@ -67,7 +70,7 @@ const Cart = ({ isCartClicked, removeProduct, addProduct }) => {
     <div className={`cart ${isCartClicked ? "cart--active" : ""} `}>
       <h4 className="cart__title">Your Cart</h4>
       <div className="cart__products">{productsInCart}</div>
-      <p className="cart__total">Total: ${getTotal(products)}</p>
+      <p className="cart__total">Total: ${getTotal(cart)}</p>
       <Link to="#" className="cart__checkout">
         Check Out
       </Link>

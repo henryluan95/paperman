@@ -28,3 +28,11 @@
   padding: 0 1rem;
   color: $drk-blue;
 }
+
+.desaturation {
+  filter: saturate(0.5);
+}
+
+.saturation {
+  filter: saturate(1.5);
+}

@@ -55,4 +55,16 @@
       color: $drk-pink;
     }
   }
+
+  &__accessibility-icon {
+    position: fixed;
+    bottom: 5rem;
+    right: 3rem;
+    border: 1px solid $drk-blue;
+    border-radius: 50%;
+    background-color: $drk-blue;
+    color: white;
+    cursor: pointer;
+    transform: scale(2);
+  }
 }

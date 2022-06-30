@@ -23,10 +23,11 @@ function App() {
   }, [cart]);
 
   //Create a function to see if product is already in products
-  const isInCart = (selectedProduct) => {
+  const isInCart = (selectedProduct, selectedModal) => {
     //find product in cart
     const foundProductInCart = cart.find(
-      (product) => product.id === selectedProduct.id
+      (product) =>
+        product.id === selectedProduct.id && product.modals === selectedModal
     );
     if (foundProductInCart) {
       return true;
@@ -49,39 +50,19 @@ function App() {
 
     //check if selected product is already existing in products arrays
     //if not, add to cart
-    if (!isInCart(selectedProduct)) {
+    if (!isInCart(selectedProduct, selectedModal)) {
       setCart([...cart, newProduct]);
-    }
-    //if yes, increase quantity
-    else if (isInCart(selectedProduct)) {
-      // const newCart = [];
-      // cart.forEach((productInCart) => {
-      //   if (productInCart.id === selectedProduct.id) {
-      //     console.log(productInCart.modals);
-      //     console.log(selectedModal);
-      //     if (productInCart.modals === selectedModal) {
-      //       newCart.push({
-      //         ...productInCart,
-      //         quantity: productInCart.quantity + 1,
-      //       });
-      //     } else {
-      //       newCart.push(productInCart);
-      //       newCart.push({
-      //         ...productInCart,
-      //         quantity: 1,
-      //         modals: selectedModal,
-      //       });
-      //     }
-      //   } else {
-      //     newCart.push(productInCart);
-      //   }
-      // });
-      // console.log(newCart);
-
+    } else {
       setCart(
         cart.map((productInCart) => {
-          if (productInCart.id === selectedProduct.id) {
-            return { ...productInCart, quantity: productInCart.quantity + 1 };
+          if (
+            productInCart.id === selectedProduct.id &&
+            productInCart.modals === selectedModal
+          ) {
+            return {
+              ...productInCart,
+              quantity: (productInCart.quantity += 1),
+            };
           } else {
             return productInCart;
           }
@@ -91,22 +72,45 @@ function App() {
   };
 
   //Create a function to remove product
-  const removeProduct = (selectedProduct) => {
+  const reduceProduct = (selectedProduct, selectedModal) => {
     setCart(
-      cart.map((productInCart) => {
-        if (productInCart.id === selectedProduct.id) {
-          return { ...productInCart, quantity: productInCart.quantity - 1 };
-        } else {
-          return productInCart;
-        }
-      })
+      cart
+        .filter((productInCart) => productInCart.quantity !== 1)
+        .map((productInCart) => {
+          if (
+            productInCart.id === selectedProduct.id &&
+            productInCart.modals === selectedModal
+          ) {
+            return {
+              ...productInCart,
+              quantity: (productInCart.quantity -= 1),
+            };
+          } else {
+            return productInCart;
+          }
+        })
     );
+  };
+
+  //Create a function to delete product
+  const deleteProduct = (selectedProduct, selectedModal) => {
+    const indexOfProduct = cart.findIndex(
+      (product) =>
+        product.id === selectedProduct.id && product.modals === selectedModal
+    );
+    cart.splice(indexOfProduct, 1);
+    const newCart = cart.map((item) => item);
+    setCart(newCart);
   };
 
   return (
     <ProductsContext.Provider value={cart}>
       <Router>
-        <Navbar removeProduct={removeProduct} addProduct={addProduct} />
+        <Navbar
+          reduceProduct={reduceProduct}
+          addProduct={addProduct}
+          deleteProduct={deleteProduct}
+        />
         <Switch>
           <Route path="/product/:productId">
             <ProductDetailPage addProduct={addProduct} />

@@ -1,0 +1,81 @@
+@use "../../styles/mixin" as *;
+@use "../../styles/variables" as *;
+
+.acces {
+  @include flex-layout(row, center, center);
+  padding: 2rem;
+  height: 100vh;
+  position: absolute;
+  background-color: white;
+  top: 2.5rem;
+  left: -100%;
+  height: 100vh;
+  width: 100%;
+  @include transition;
+
+  &--active {
+    @include transition;
+    left: 10rem;
+  }
+
+  @include desktop {
+    max-width: 30vw;
+    top: 10rem;
+    height: 60vh;
+    border-radius: 1.5rem;
+    border: 3px solid $drk-blue;
+  }
+
+  &__title {
+    margin-bottom: 3rem;
+    font-family: $title;
+  }
+
+  &__card {
+    @include flex-layout(column, center, center);
+    text-align: center;
+  }
+
+  &__mode {
+    @include flex-layout(row, flex-start, center);
+    margin-bottom: 1rem;
+    border: 2px solid black;
+    border-radius: 10px;
+  }
+}
+
+.mode {
+  width: 100%;
+  padding: 0.5rem;
+
+  &__info {
+    @include flex-layout(column, center, center);
+    padding: 0 0.5rem;
+    margin: 0 auto;
+  }
+
+  &__button {
+    min-width: 4rem;
+    background: none;
+
+    &:hover {
+      background-color: $drk-blue;
+      color: white;
+    }
+  }
+
+  &__title {
+    color: black;
+    @include desktop {
+      font-size: 1.1rem;
+    }
+  }
+
+  &__desc {
+    color: $drk-blue;
+    font-size: 0.8rem;
+    @include desktop {
+      font-size: 0.9rem;
+    }
+  }
+}

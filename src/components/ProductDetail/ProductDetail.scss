@@ -50,12 +50,6 @@
     }
   }
 
-  &__buttons {
-    @include flex-layout(row);
-    width: 100%;
-    gap: 0.5rem;
-  }
-
   &__buttons-like,
   &__buttons-add {
     width: 6rem;
@@ -71,6 +65,14 @@
       background-color: $drk-pink;
       color: white;
     }
+  }
+
+  &__buttons-add {
+    &:hover {
+      background-color: $drk-blue;
+      color: white;
+    }
+    margin-top: auto;
   }
 
   &__promo {

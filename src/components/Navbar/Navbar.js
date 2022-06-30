@@ -7,17 +7,25 @@ import { Link } from "react-router-dom";
 import Login from "../../components/Login/Login";
 import Cart from "../../components/Cart/Cart";
 import { ProductsContext } from "../../App";
+import Accessibility from "../Accessibility/Accessibility";
+import AccessibilityIcon from "@mui/icons-material/Accessibility";
 
-const Navbar = ({ removeProduct, addProduct }) => {
+const Navbar = ({ reduceProduct, addProduct, deleteProduct }) => {
   const products = useContext(ProductsContext);
 
   const [isLoginClicked, setIsLoginClicked] = useState(false);
   const [isCartClicked, setIsCartClicked] = useState(false);
+  const [isAccessibilityClicked, setIsAccessibilityClicked] = useState(false);
 
   //Close login and cart component when return home
   const handleLogoClicked = () => {
     setIsLoginClicked(false);
     setIsCartClicked(false);
+  };
+
+  //Open accessibility tab
+  const handleAccessibility = () => {
+    setIsAccessibilityClicked(!isAccessibilityClicked);
   };
 
   //Open and close log in component while always having cart component closed
@@ -34,11 +42,20 @@ const Navbar = ({ removeProduct, addProduct }) => {
 
   return (
     <nav className="navbar">
+      <Accessibility
+        isAccessibilityClicked={isAccessibilityClicked}
+        setIsAccessibilityClicked={setIsAccessibilityClicked}
+      />
       <Login isLoginClicked={isLoginClicked} />
       <Cart
         isCartClicked={isCartClicked}
-        removeProduct={removeProduct}
+        reduceProduct={reduceProduct}
         addProduct={addProduct}
+        deleteProduct={deleteProduct}
+      />
+      <AccessibilityIcon
+        className="navbar__accessibility-icon"
+        onClick={handleAccessibility}
       />
       <div className="navbar__container">
         <Link to="/" className="navbar-logo" onClick={handleLogoClicked}>
