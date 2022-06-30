@@ -11,7 +11,7 @@ import Accessibility from "../Accessibility/Accessibility";
 import AccessibilityIcon from "@mui/icons-material/Accessibility";
 
 const Navbar = ({ reduceProduct, addProduct, deleteProduct }) => {
-  const products = useContext(ProductsContext);
+  const cart = useContext(ProductsContext);
 
   const [isLoginClicked, setIsLoginClicked] = useState(false);
   const [isCartClicked, setIsCartClicked] = useState(false);
@@ -40,6 +40,13 @@ const Navbar = ({ reduceProduct, addProduct, deleteProduct }) => {
     setIsLoginClicked(false);
   };
 
+  //Create a function to count the number of item in the bag
+  const countItem = (products) => {
+    let quantity = 0;
+    products.forEach((product) => (quantity += product.quantity));
+    return quantity;
+  };
+
   return (
     <nav className="navbar">
       <Accessibility
@@ -53,6 +60,7 @@ const Navbar = ({ reduceProduct, addProduct, deleteProduct }) => {
         addProduct={addProduct}
         deleteProduct={deleteProduct}
       />
+
       <AccessibilityIcon
         className="navbar__accessibility-icon"
         onClick={handleAccessibility}
@@ -69,10 +77,13 @@ const Navbar = ({ reduceProduct, addProduct, deleteProduct }) => {
           <Link to="/liked" className="navbar__liked-icon">
             <FavoriteBorderIcon />
           </Link>
-          <ShoppingBagOutlinedIcon
-            className="navbar__bag-icon"
-            onClick={handleCartPage}
-          />
+          <div className="navbar__bag">
+            <span className="navbar__bag-counter">{countItem(cart)}</span>
+            <ShoppingBagOutlinedIcon
+              className="navbar__bag-icon"
+              onClick={handleCartPage}
+            />
+          </div>
         </div>
       </div>
     </nav>

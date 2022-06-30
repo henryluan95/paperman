@@ -30,8 +30,6 @@ const ProductDetail = ({ product, addProduct }) => {
     return setModalSelectionError(false);
   };
 
-  console.log(selectedModal);
-
   return (
     <div className="product-detail">
       <img

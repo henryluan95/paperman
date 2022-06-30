@@ -31,11 +31,23 @@
     cursor: pointer;
   }
 
-  &__bag-icon {
-    margin-left: 0.5rem;
+  &__bag {
+    position: relative;
 
-    &:active {
-      color: $drk-pink;
+    &-counter {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(6px, -5px);
+      font-size: 0.8rem;
+    }
+
+    &-icon {
+      margin-left: 0.5rem;
+
+      &:active {
+        color: $drk-pink;
+      }
     }
   }
 
