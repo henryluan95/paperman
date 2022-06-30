@@ -8,28 +8,22 @@ const Accessibility = ({
 }) => {
   const [isSeizureModeOn, setIsSeizureModeOn] = useState(false);
   const [isVisionImpairedModeOn, setIsVisionImpairedModeOn] = useState(false);
+  const [isCognitiveModeOn, setIsCognitiveModeOn] = useState(false);
 
   //   Create a function to handle seizure mode
   const handleSeizureMode = () => {
     setIsSeizureModeOn(!isSeizureModeOn);
-    // await setIsVisionImpairedModeOn(false);
-    // if (isSeizureModeOn) {
-    //   document.documentElement.className = "desaturation";
-    // } else {
-    //   document.documentElement.classList.remove("desaturation");
-    // }
-    // setIsAccessibilityClicked(!isAccessibilityClicked);
+    setIsAccessibilityClicked(false);
   };
 
   const handleVisionImpairedMode = () => {
     setIsVisionImpairedModeOn(!isVisionImpairedModeOn);
-    // setIsSeizureModeOn(false);
-    // if (isVisionImpairedModeOn) {
-    //   document.documentElement.className = "saturation";
-    // } else {
-    //   document.documentElement.classList.remove("saturation");
-    // }
-    // setIsAccessibilityClicked(!isAccessibilityClicked);
+    setIsAccessibilityClicked(false);
+  };
+
+  const handleCognitiveMode = () => {
+    setIsCognitiveModeOn(!isCognitiveModeOn);
+    setIsAccessibilityClicked(false);
   };
 
   useEffect(() => {
@@ -49,6 +43,31 @@ const Accessibility = ({
       document.documentElement.classList.remove("saturation");
     }
   }, [isVisionImpairedModeOn]);
+
+  useEffect(() => {
+    const pTags = document.querySelectorAll("p");
+    const h1Tags = document.querySelectorAll("h1");
+    const h2Tags = document.querySelectorAll("h2");
+    const h3Tags = document.querySelectorAll("h3");
+    const h4Tags = document.querySelectorAll("h4");
+    const spanTags = document.querySelectorAll("span");
+
+    if (isCognitiveModeOn) {
+      pTags.forEach((tag) => tag.classList.add("text-border"));
+      h1Tags.forEach((tag) => tag.classList.add("text-border"));
+      h2Tags.forEach((tag) => tag.classList.add("text-border"));
+      h3Tags.forEach((tag) => tag.classList.add("text-border"));
+      h4Tags.forEach((tag) => tag.classList.add("text-border"));
+      spanTags.forEach((tag) => tag.classList.add("text-border"));
+    } else {
+      pTags.forEach((tag) => tag.classList.remove("text-border"));
+      h1Tags.forEach((tag) => tag.classList.remove("text-border"));
+      h2Tags.forEach((tag) => tag.classList.remove("text-border"));
+      h3Tags.forEach((tag) => tag.classList.remove("text-border"));
+      h4Tags.forEach((tag) => tag.classList.remove("text-border"));
+      spanTags.forEach((tag) => tag.classList.remove("text-border"));
+    }
+  });
 
   return (
     <div className={`acces ${isAccessibilityClicked ? "acces--active" : ""}`}>
@@ -76,7 +95,9 @@ const Accessibility = ({
           </div>
         </div>
         <div className="acces__mode mode">
-          <button className="button mode__button">Off</button>
+          <button className="button mode__button" onClick={handleCognitiveMode}>
+            Off
+          </button>
           <div className="mode__info">
             <span className="mode__title">Cognitive Disability Mode</span>
             <span className="mode__desc">
