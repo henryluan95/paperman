@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./ToggleButton.scss";
 
 const ToggleButton = ({ handleMode, isModeOn }) => {

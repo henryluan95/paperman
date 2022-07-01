@@ -6,11 +6,54 @@ import useCollection from "../../hooks/useCollection";
 import Loader from "../../components/Loader/Loader";
 
 const ProductsPage = () => {
+  const [isSortedByPrice, setIsSortedByPrice] = useState(false);
+  const [isSortedBySearch, setIsSortedBySearch] = useState(false);
+  const [isSortedByModal, setIsSortedByModal] = useState(false);
+  const [selectedPriceOrder, setSelectedPriceOrder] = useState("");
+  const [selectedModal, setSelectedModal] = useState("");
   const { products, loading } = useCollection(productsColRef);
+  const [requestedProducts, setRequestedProducts] = useState(null);
+
+  //Create functions to track sorting methods
+  const handlePriceSorting = (e) => {
+    setIsSortedByPrice(true);
+    setIsSortedBySearch(false);
+    setIsSortedByModal(false);
+    setSelectedPriceOrder(e.target.value);
+  };
+  const handleModalSearching = (e) => {
+    setIsSortedByModal(true);
+    setIsSortedByPrice(false);
+    setIsSortedBySearch(false);
+  };
+
+  //Set up initial products
+  useEffect(() => {
+    setRequestedProducts(products);
+  }, [products]);
+
+  //Check on sorting by price
+  useEffect(() => {
+    if (isSortedByPrice) {
+      const tempProducts = products.map((product) => product);
+      if (selectedPriceOrder === "Low to High") {
+        tempProducts.sort((a, b) => a.price - b.price);
+        console.log(tempProducts);
+        return setRequestedProducts(tempProducts);
+      } else if (selectedPriceOrder === "High to Low") {
+        tempProducts.sort((a, b) => b.price - a.price);
+        return setRequestedProducts(tempProducts);
+      } else {
+        setRequestedProducts(tempProducts);
+      }
+    }
+  }, [selectedPriceOrder]);
 
   if (loading) {
     return <Loader />;
   }
+
+  console.log(products);
 
   return (
     <div className="products-page">
@@ -21,11 +64,15 @@ const ProductsPage = () => {
             className="input view__price-selection"
             name="price-selection"
             id="price-selection"
+            onChange={handlePriceSorting}
           >
+            <option className="view__price-option" value="">
+              Sort by Price
+            </option>
             <option className="view__price-option" value="Low to High">
               Low to High
             </option>
-            <option className="view__price-option" value="  High to Low">
+            <option className="view__price-option" value="High to Low">
               High to Low
             </option>
           </select>
@@ -44,6 +91,7 @@ const ProductsPage = () => {
             className="input view__modals-selection"
             name="modals-selection"
             id="modals-selection"
+            onChange={handleModalSearching}
           >
             <option className="product-detail__modal-option" value="">
               --Please choose a phone modal--
@@ -71,7 +119,7 @@ const ProductsPage = () => {
       </div>
       <h2 className="view__title">All Products</h2>
       <div className="line view__line "></div>
-      <Products products={products} />
+      <Products products={requestedProducts ?? products} />
     </div>
   );
 };
