@@ -16,6 +16,8 @@ export const ProductsContext = createContext();
 function App() {
   //get products out of local storage
   const [cart, setCart] = useState(getCurrentCart());
+  //Keep track of ADHD mode
+  const [isADHDModeOn, setIsADHDModeOn] = useState(false);
 
   useEffect(() => {
     return function cleanup() {
@@ -115,8 +117,10 @@ function App() {
           reduceProduct={reduceProduct}
           addProduct={addProduct}
           deleteProduct={deleteProduct}
+          isADHDModeOn={isADHDModeOn}
+          setIsADHDModeOn={setIsADHDModeOn}
         />
-        <FocusBar />
+        {isADHDModeOn && <FocusBar />}
         <Switch>
           <Route path="/product/:productId">
             <ProductDetailPage addProduct={addProduct} />

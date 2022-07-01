@@ -10,7 +10,13 @@ import { ProductsContext } from "../../App";
 import Accessibility from "../Accessibility/Accessibility";
 import AccessibilityIcon from "@mui/icons-material/Accessibility";
 
-const Navbar = ({ reduceProduct, addProduct, deleteProduct }) => {
+const Navbar = ({
+  reduceProduct,
+  addProduct,
+  deleteProduct,
+  isADHDModeOn,
+  setIsADHDModeOn,
+}) => {
   const cart = useContext(ProductsContext);
 
   const [isLoginClicked, setIsLoginClicked] = useState(false);
@@ -52,6 +58,8 @@ const Navbar = ({ reduceProduct, addProduct, deleteProduct }) => {
       <Accessibility
         isAccessibilityClicked={isAccessibilityClicked}
         setIsAccessibilityClicked={setIsAccessibilityClicked}
+        setIsADHDModeOn={setIsADHDModeOn}
+        isADHDModeOn={isADHDModeOn}
       />
       <Login
         isLoginClicked={isLoginClicked}

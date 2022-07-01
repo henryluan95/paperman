@@ -7,6 +7,8 @@ import CloseButton from "../CloseButton/CloseButton";
 const Accessibility = ({
   isAccessibilityClicked,
   setIsAccessibilityClicked,
+  setIsADHDModeOn,
+  isADHDModeOn,
 }) => {
   const [isSeizureModeOn, setIsSeizureModeOn] = useState(false);
   const [isVisionImpairedModeOn, setIsVisionImpairedModeOn] = useState(false);
@@ -23,6 +25,10 @@ const Accessibility = ({
 
   const handleCognitiveMode = () => {
     setIsCognitiveModeOn(!isCognitiveModeOn);
+  };
+
+  const handleADHDMode = () => {
+    setIsADHDModeOn(!isADHDModeOn);
   };
 
   useEffect(() => {
@@ -91,6 +97,12 @@ const Accessibility = ({
           <div className="mode__info">
             <span className="mode__title">Seizure Safe Mode</span>
             <span className="mode__desc">Reduces Color</span>
+            {isSeizureModeOn && (
+              <p className="mode__detail">
+                This mode allows seizure prone users to browse the website
+                safely by eliminating risky colour combinations.
+              </p>
+            )}
           </div>
         </div>
         <div className="acces__mode mode">
@@ -100,7 +112,14 @@ const Accessibility = ({
           />
           <div className="mode__info ">
             <span className="mode__title">Vision Impaired Mode</span>
-            <span className="mode__desc">Enhances visuals</span>
+            <span className="mode__desc">Enhances Visuals</span>
+            {isVisionImpairedModeOn && (
+              <p className="mode__detail">
+                This mode enhances the visual of the website so that it can
+                provide better user experience for those with Degrading
+                Eyesight, Tunnel Vision, Cataract and others.
+              </p>
+            )}
           </div>
         </div>
         <div className="acces__mode mode">
@@ -111,8 +130,34 @@ const Accessibility = ({
           <div className="mode__info">
             <span className="mode__title">Cognitive Disability Mode</span>
             <span className="mode__desc">
-              Assists reading and reduces text float
+              Assists Reading and Reduces Text Float
             </span>
+            {isCognitiveModeOn && (
+              <p className="mode__detail">
+                This mode assists the readability of the website to support
+                users with cognitive disabilities such as Autism, Dyslexia and
+                others.
+              </p>
+            )}
+          </div>
+        </div>
+        <div className="acces__mode mode">
+          <ToggleButton
+            className="button mode__button"
+            handleMode={handleADHDMode}
+          />
+          <div className="mode__info">
+            <span className="mode__title">ADHD Assisted Mode</span>
+            <span className="mode__desc">
+              Increases Focus and Reduces Distractions
+            </span>
+            {isADHDModeOn && (
+              <p className="mode__detail">
+                This mode draws users' attention to the essential elements of
+                the web page. This feature enhances focus and significantly
+                reduces distractions.
+              </p>
+            )}
           </div>
         </div>
       </div>

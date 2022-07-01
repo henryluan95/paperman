@@ -14,10 +14,9 @@ const FocusBar = () => {
 
   useEffect(() => {
     document.addEventListener("mousemove", onMouseMove);
-    document.addEventListener("scroll", onMouseMove);
+
     return function cleanup() {
       document.removeEventListener("mousemove", onMouseMove);
-      document.addEventListener("scroll", onMouseMove);
     };
   });
 
