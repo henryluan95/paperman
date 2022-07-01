@@ -29,12 +29,16 @@ const Accessibility = ({
 
   const handleADHDMode = () => {
     setIsADHDModeOn(!isADHDModeOn);
+    setIsVisionImpairedModeOn(false);
+    setIsCognitiveModeOn(false);
+    setIsSeizureModeOn(false);
   };
 
   useEffect(() => {
     if (isSeizureModeOn) {
       setIsVisionImpairedModeOn(false);
       setIsCognitiveModeOn(false);
+      setIsADHDModeOn(false);
       document.documentElement.className = "desaturation";
       document.documentElement.classList.remove("saturation");
     } else {
@@ -46,6 +50,7 @@ const Accessibility = ({
     if (isVisionImpairedModeOn) {
       setIsSeizureModeOn(false);
       setIsCognitiveModeOn(false);
+      setIsADHDModeOn(false);
       document.documentElement.className = "saturation";
     } else {
       document.documentElement.classList.remove("saturation");
@@ -63,6 +68,7 @@ const Accessibility = ({
     if (isCognitiveModeOn) {
       setIsSeizureModeOn(false);
       setIsVisionImpairedModeOn(false);
+      setIsADHDModeOn(false);
       pTags.forEach((tag) => tag.classList.add("text-border"));
       h1Tags.forEach((tag) => tag.classList.add("text-border"));
       h2Tags.forEach((tag) => tag.classList.add("text-border"));
@@ -93,6 +99,7 @@ const Accessibility = ({
           <ToggleButton
             className="button mode__button"
             handleMode={handleSeizureMode}
+            isModeOn={isSeizureModeOn}
           />
           <div className="mode__info">
             <span className="mode__title">Seizure Safe Mode</span>
@@ -109,6 +116,7 @@ const Accessibility = ({
           <ToggleButton
             className="button mode__button"
             handleMode={handleVisionImpairedMode}
+            isModeOn={isVisionImpairedModeOn}
           />
           <div className="mode__info ">
             <span className="mode__title">Vision Impaired Mode</span>
@@ -126,6 +134,7 @@ const Accessibility = ({
           <ToggleButton
             className="button mode__button"
             handleMode={handleCognitiveMode}
+            isModeOn={isCognitiveModeOn}
           />
           <div className="mode__info">
             <span className="mode__title">Cognitive Disability Mode</span>
@@ -145,6 +154,7 @@ const Accessibility = ({
           <ToggleButton
             className="button mode__button"
             handleMode={handleADHDMode}
+            isModeOn={isADHDModeOn}
           />
           <div className="mode__info">
             <span className="mode__title">ADHD Assisted Mode</span>
