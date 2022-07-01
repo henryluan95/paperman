@@ -1,6 +1,8 @@
 import "./Accessibility.scss";
-
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import ToggleButton from "../ToggleButton/ToggleButton";
+import backgroundImage from "../../assets/images/Polygon.svg";
+import CloseButton from "../CloseButton/CloseButton";
 
 const Accessibility = ({
   isAccessibilityClicked,
@@ -13,23 +15,22 @@ const Accessibility = ({
   //   Create a function to handle seizure mode
   const handleSeizureMode = () => {
     setIsSeizureModeOn(!isSeizureModeOn);
-    setIsAccessibilityClicked(false);
   };
 
   const handleVisionImpairedMode = () => {
     setIsVisionImpairedModeOn(!isVisionImpairedModeOn);
-    setIsAccessibilityClicked(false);
   };
 
   const handleCognitiveMode = () => {
     setIsCognitiveModeOn(!isCognitiveModeOn);
-    setIsAccessibilityClicked(false);
   };
 
   useEffect(() => {
     if (isSeizureModeOn) {
       setIsVisionImpairedModeOn(false);
+      setIsCognitiveModeOn(false);
       document.documentElement.className = "desaturation";
+      document.documentElement.classList.remove("saturation");
     } else {
       document.documentElement.classList.remove("desaturation");
     }
@@ -38,6 +39,7 @@ const Accessibility = ({
   useEffect(() => {
     if (isVisionImpairedModeOn) {
       setIsSeizureModeOn(false);
+      setIsCognitiveModeOn(false);
       document.documentElement.className = "saturation";
     } else {
       document.documentElement.classList.remove("saturation");
@@ -53,6 +55,8 @@ const Accessibility = ({
     const spanTags = document.querySelectorAll("span");
 
     if (isCognitiveModeOn) {
+      setIsSeizureModeOn(false);
+      setIsVisionImpairedModeOn(false);
       pTags.forEach((tag) => tag.classList.add("text-border"));
       h1Tags.forEach((tag) => tag.classList.add("text-border"));
       h2Tags.forEach((tag) => tag.classList.add("text-border"));
@@ -67,37 +71,43 @@ const Accessibility = ({
       h4Tags.forEach((tag) => tag.classList.remove("text-border"));
       spanTags.forEach((tag) => tag.classList.remove("text-border"));
     }
-  });
+  }, [isCognitiveModeOn]);
 
   return (
     <div className={`acces ${isAccessibilityClicked ? "acces--active" : ""}`}>
+      <img
+        className="acces__background"
+        src={backgroundImage}
+        alt="background "
+      />
+      <CloseButton handleClick={setIsAccessibilityClicked} />
       <div className="acces__card">
         <h2 className="acces__title">Accessibility Adjustments</h2>
         <div className="acces__mode mode">
-          <button className="button mode__button" onClick={handleSeizureMode}>
-            Off
-          </button>
+          <ToggleButton
+            className="button mode__button"
+            handleMode={handleSeizureMode}
+          />
           <div className="mode__info">
             <span className="mode__title">Seizure Safe Mode</span>
             <span className="mode__desc">Reduces Color</span>
           </div>
         </div>
         <div className="acces__mode mode">
-          <button
+          <ToggleButton
             className="button mode__button"
-            onClick={handleVisionImpairedMode}
-          >
-            Off
-          </button>
+            handleMode={handleVisionImpairedMode}
+          />
           <div className="mode__info ">
             <span className="mode__title">Vision Impaired Mode</span>
             <span className="mode__desc">Enhances visuals</span>
           </div>
         </div>
         <div className="acces__mode mode">
-          <button className="button mode__button" onClick={handleCognitiveMode}>
-            Off
-          </button>
+          <ToggleButton
+            className="button mode__button"
+            handleMode={handleCognitiveMode}
+          />
           <div className="mode__info">
             <span className="mode__title">Cognitive Disability Mode</span>
             <span className="mode__desc">

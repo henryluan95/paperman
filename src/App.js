@@ -8,6 +8,7 @@ import ProductsPage from "./pages/ProductsPage/ProductsPage";
 import LikedPage from "./pages/LikedPage/LikedPage";
 import getCurrentCart from "./util/getCurrentCart";
 import { useState, createContext, useEffect } from "react";
+import FocusBar from "./components/FocusBar/FocusBar";
 
 //create context
 export const ProductsContext = createContext();
@@ -105,6 +106,8 @@ function App() {
     setCart(newCart);
   };
 
+  //
+
   return (
     <ProductsContext.Provider value={cart}>
       <Router>
@@ -113,6 +116,7 @@ function App() {
           addProduct={addProduct}
           deleteProduct={deleteProduct}
         />
+        <FocusBar />
         <Switch>
           <Route path="/product/:productId">
             <ProductDetailPage addProduct={addProduct} />

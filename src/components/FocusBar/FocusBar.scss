@@ -1,0 +1,19 @@
+.focus-bar {
+  &__top {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    height: 150vh;
+    width: 300%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+  }
+
+  &__bottom {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    height: 150vh;
+    width: 300%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+  }
+}

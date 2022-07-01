@@ -72,11 +72,15 @@
     position: fixed;
     bottom: 5rem;
     right: 3rem;
-    border: 1px solid $drk-blue;
+    border: 1px solid $acces;
     border-radius: 50%;
-    background-color: $drk-blue;
-    color: white;
+    background-color: white;
+    color: $acces;
     cursor: pointer;
     transform: scale(2);
+
+    &:hover {
+      transform: scale(1.8);
+    }
   }
 }

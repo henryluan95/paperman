@@ -6,8 +6,9 @@ import {
   updateProfile,
 } from "firebase/auth";
 import "./Login.scss";
+import CloseButton from "../CloseButton/CloseButton";
 
-const Login = ({ isLoginClicked }) => {
+const Login = ({ isLoginClicked, setIsLoginClicked }) => {
   //Check if we are on sign in page
   const [isSignIn, setIsSignIn] = useState(true);
   const [currentUser, setCurrentUser] = useState(null);
@@ -127,6 +128,7 @@ const Login = ({ isLoginClicked }) => {
 
   return (
     <div className={`login ${isLoginClicked ? "login--active" : ""} `}>
+      <CloseButton handleClick={setIsLoginClicked} />
       <ul className="login__items">
         {currentUser ? singedInElement() : signInElement}
       </ul>

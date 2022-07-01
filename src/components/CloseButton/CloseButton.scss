@@ -1,0 +1,19 @@
+@use "../../styles/mixin" as *;
+@use "../../styles/variables" as *;
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-70%, 70%) rotate(0);
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  z-index: 3;
+  cursor: pointer;
+  @include transition;
+
+  &:hover {
+    transform: translate(-70%, 70%) rotate(360deg);
+  }
+}

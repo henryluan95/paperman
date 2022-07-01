@@ -53,7 +53,10 @@ const Navbar = ({ reduceProduct, addProduct, deleteProduct }) => {
         isAccessibilityClicked={isAccessibilityClicked}
         setIsAccessibilityClicked={setIsAccessibilityClicked}
       />
-      <Login isLoginClicked={isLoginClicked} />
+      <Login
+        isLoginClicked={isLoginClicked}
+        setIsLoginClicked={setIsLoginClicked}
+      />
       <Cart
         isCartClicked={isCartClicked}
         reduceProduct={reduceProduct}
