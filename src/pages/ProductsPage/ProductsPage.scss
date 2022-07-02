@@ -20,13 +20,6 @@
     min-width: 15.9rem;
   }
 
-  &__search-input {
-    min-width: 15.9rem;
-    &::placeholder {
-      text-align: center;
-    }
-  }
-
   &__title {
     font-size: 3rem;
     font-family: $text;
