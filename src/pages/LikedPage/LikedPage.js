@@ -4,11 +4,17 @@ import { productsColRef } from "../../firebase";
 import { where, query } from "firebase/firestore";
 import useCollection from "../../hooks/useCollection";
 import Loader from "../../components/Loader/Loader";
+import { useEffect } from "react";
 
 const LikedPage = () => {
   //query data to get only liked product
   const likedQuery = query(productsColRef, where("isLiked", "==", true));
   const { products, loading } = useCollection(likedQuery);
+
+  //Set page title
+  useEffect(() => {
+    document.title = "Liked Products | Paperman";
+  }, []);
 
   if (loading) {
     return <Loader />;

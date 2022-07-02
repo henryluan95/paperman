@@ -20,10 +20,22 @@ const ProductDetailPage = ({ addProduct }) => {
     onSnapshot(docRef, (doc) => setProduct({ ...doc.data(), id: doc.id }));
   };
 
+  //Get product on Load
   useEffect(() => {
     window.scrollTo(0, 0);
-    getProduct();
-    setLoading(false);
+
+    //fetch data before set loading state
+    const fetchProduct = () => {
+      try {
+        const unsubscribe = getProduct();
+        return () => unsubscribe();
+      } catch (err) {
+        console.log(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProduct();
   }, []);
 
   if (loading) {

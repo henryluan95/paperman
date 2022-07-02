@@ -1,7 +1,7 @@
 import "./ProductDetail.scss";
 import { db } from "../../firebase";
 import { doc, updateDoc } from "firebase/firestore";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ProductDetail = ({ product, addProduct }) => {
   const [selectedModal, setSelectedModal] = useState("");
@@ -29,6 +29,11 @@ const ProductDetail = ({ product, addProduct }) => {
     }
     return setModalSelectionError(false);
   };
+
+  //Set page title
+  useEffect(() => {
+    document.title = `${product.title || "Product"} | Paperman`;
+  });
 
   return (
     <div className="product-detail">

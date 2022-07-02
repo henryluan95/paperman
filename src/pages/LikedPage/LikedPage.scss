@@ -3,7 +3,7 @@
 
 .liked-page {
   margin-top: $nav-height;
-  @include flex-layout(column, center, center);
+  @include flex-layout(column, flex-start, center);
   min-height: calc(100vh - $nav-height - 2.45rem);
 }
 

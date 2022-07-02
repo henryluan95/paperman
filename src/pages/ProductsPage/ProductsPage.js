@@ -31,6 +31,11 @@ const ProductsPage = () => {
     priceSelectionEl.current.value = "";
   };
 
+  //Set page title
+  useEffect(() => {
+    document.title = "Products | Paperman";
+  }, []);
+
   //Set up initial products
   useEffect(() => {
     setRequestedProducts(products);

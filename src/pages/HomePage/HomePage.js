@@ -12,6 +12,12 @@ import useCollection from "../../hooks/useCollection";
 
 const HomePage = () => {
   const { products, loading } = useCollection(productsColRef);
+
+  //Set page title
+  useEffect(() => {
+    document.title = "Paperman";
+  }, []);
+
   if (loading) {
     return <Loader />;
   }
