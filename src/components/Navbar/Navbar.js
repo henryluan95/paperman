@@ -70,6 +70,7 @@ const Navbar = ({
         reduceProduct={reduceProduct}
         addProduct={addProduct}
         deleteProduct={deleteProduct}
+        setIsCartClicked={setIsCartClicked}
       />
 
       <AccessibilityIcon

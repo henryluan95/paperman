@@ -23,14 +23,13 @@
   }
 
   &__title {
-    margin: 1rem 0;
+    margin: 3rem 0 1rem 0;
     font-size: 2rem;
     font-weight: 400;
     font-family: $title;
   }
 
   &__products {
-    @include flex-layout(column, flex-start, center);
     padding: 1rem 1rem 0 1rem;
     width: 100%;
     overflow-y: scroll;

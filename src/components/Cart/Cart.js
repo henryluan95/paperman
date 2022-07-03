@@ -1,12 +1,18 @@
 import "./Cart.scss";
 import { Link } from "react-router-dom";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
-import decreaseQuantity from "../../util/decreaseQuantity";
-import setCart from "../../util/setCart";
 import { useContext } from "react";
 import { ProductsContext } from "../../App";
+import { v4 as uuid } from "uuid";
+import CloseButton from "../CloseButton/CloseButton";
 
-const Cart = ({ isCartClicked, reduceProduct, addProduct, deleteProduct }) => {
+const Cart = ({
+  isCartClicked,
+  reduceProduct,
+  addProduct,
+  deleteProduct,
+  setIsCartClicked,
+}) => {
   const cart = useContext(ProductsContext);
 
   //create a function to get total of all products
@@ -18,16 +24,10 @@ const Cart = ({ isCartClicked, reduceProduct, addProduct, deleteProduct }) => {
     return total.toFixed(2);
   };
 
-  //create a function to decrease quantity of a product in cart
-  const handleDecreaseQuantity = (product) => {
-    const updatedCart = decreaseQuantity(cart, product);
-    setCart(updatedCart);
-  };
-
   const productsInCart = cart.map((product) => {
     return (
-      <>
-        <div className="cart__product" key={product.id}>
+      <div className="cart__item" key={uuid()}>
+        <div className="cart__product">
           <img
             className="cart__product-img"
             src={product.image}
@@ -62,12 +62,13 @@ const Cart = ({ isCartClicked, reduceProduct, addProduct, deleteProduct }) => {
           </div>
         </div>
         <div className="line cart__line "></div>
-      </>
+      </div>
     );
   });
 
   return (
     <div className={`cart ${isCartClicked ? "cart--active" : ""} `}>
+      <CloseButton handleClick={setIsCartClicked} />
       <h4 className="cart__title">Your Cart</h4>
       <div className="cart__products">{productsInCart}</div>
       <p className="cart__total">Total: ${getTotal(cart)}</p>

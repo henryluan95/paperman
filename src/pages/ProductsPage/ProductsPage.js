@@ -19,16 +19,16 @@ const ProductsPage = () => {
   //Create functions to track sorting methods
   const handlePriceSorting = (e) => {
     setIsSortedByPrice(true);
-    setIsSortedByModal(false);
+    // setIsSortedByModal(false);
     setSelectedPriceOrder(e.target.value);
-    console.log(modalSelectionEl.current);
-    modalSelectionEl.current.value = "";
+    // console.log(modalSelectionEl.current);
+    // modalSelectionEl.current.value = "";
   };
   const handleModalSearching = (e) => {
     setIsSortedByModal(true);
-    setIsSortedByPrice(false);
+    // setIsSortedByPrice(false);
     setSelectedModal(e.target.value);
-    priceSelectionEl.current.value = "";
+    // priceSelectionEl.current.value = "";
   };
 
   //Set page title

@@ -11,8 +11,8 @@ const useCollection = (colRef) => {
     const fetchProducts = async () => {
       try {
         await setLoading(true);
-        const tempProducts = [];
         const unsubscribe = onSnapshot(colRef, (snapshot) => {
+          const tempProducts = [];
           snapshot.docs.forEach((doc) => {
             tempProducts.push({ ...doc.data(), id: doc.id });
           });
