@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection } from "firebase/firestore";
+import { getFirestore, collection, query, limit } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
@@ -22,3 +22,6 @@ export const auth = getAuth();
 
 //get collection ref
 export const productsColRef = collection(db, "products");
+
+//query for first set of document
+export const first = query(productsColRef, limit(12));

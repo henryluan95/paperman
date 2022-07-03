@@ -1,22 +1,38 @@
 @use "../../styles/mixin" as *;
 @use "../../styles/variables" as *;
 
-.products-wrapper {
+.products {
   @include tablet {
     @include flex-layout(row, flex-start, stretch);
     padding-bottom: 2rem;
   }
-}
 
-.products {
-  @include flex-layout(column, center, center);
-  margin-top: 1rem;
-  gap: 2rem;
-  padding: 0 1rem;
-  @include tablet {
-    @include flex-layout(row, center);
-    margin-top: 0;
-    flex-wrap: wrap;
+  &__section {
+    @include flex-layout(column, center, center);
+  }
+
+  &__list {
+    @include flex-layout(column, center, center);
+    margin-top: 1rem;
+    gap: 2rem;
+    padding: 0 1rem;
+    @include tablet {
+      @include flex-layout(row, center);
+      margin-top: 0;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__view-all {
+    width: 8rem;
+    background: none;
+    @include link-reset;
+    color: $drk-blue;
+
+    &:hover {
+      background-color: $drk-blue;
+      color: white;
+    }
   }
 }
 

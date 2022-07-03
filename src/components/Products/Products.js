@@ -50,9 +50,16 @@ const Products = ({ products }) => {
   });
 
   return (
-    <div className="products-wrapper">
+    <div className="products">
       {location.pathname === "/" && <Categories />}
-      <div className="products">{productsElement}</div>
+      <div className="products__section">
+        <div className="products__list">{productsElement}</div>
+        {location.pathname === "/" && (
+          <Link to="/products" className="button products__view-all">
+            View All
+          </Link>
+        )}
+      </div>
     </div>
   );
 };
