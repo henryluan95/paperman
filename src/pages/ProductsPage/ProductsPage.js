@@ -18,16 +18,26 @@ const ProductsPage = () => {
 
   //Create functions to track sorting methods
   const handlePriceSorting = (e) => {
-    setIsSortedByPrice(true);
+    console.log(e.target.value);
+    if (e.target.value) {
+      setIsSortedByPrice(true);
+      setSelectedPriceOrder(e.target.value);
+    } else {
+      setIsSortedByPrice(false);
+      setSelectedPriceOrder("");
+    }
     // setIsSortedByModal(false);
-    setSelectedPriceOrder(e.target.value);
-    // console.log(modalSelectionEl.current);
     // modalSelectionEl.current.value = "";
   };
   const handleModalSearching = (e) => {
-    setIsSortedByModal(true);
+    if (e.target.value) {
+      setIsSortedByModal(true);
+      setSelectedModal(e.target.value);
+    } else {
+      setIsSortedByModal(false);
+      setSelectedModal("");
+    }
     // setIsSortedByPrice(false);
-    setSelectedModal(e.target.value);
     // priceSelectionEl.current.value = "";
   };
 
@@ -41,35 +51,84 @@ const ProductsPage = () => {
     setRequestedProducts(products);
   }, [products]);
 
-  //Check on sorting by price
+  //Check condition for filter and sorting
   useEffect(() => {
-    if (isSortedByPrice) {
-      const tempProducts = products.map((product) => product);
-      if (selectedPriceOrder === "Low to High") {
-        tempProducts.sort((a, b) => a.price - b.price);
-        return setRequestedProducts(tempProducts);
-      } else if (selectedPriceOrder === "High to Low") {
-        tempProducts.sort((a, b) => b.price - a.price);
-        return setRequestedProducts(tempProducts);
-      } else {
-        setRequestedProducts(tempProducts);
-      }
+    //there is no sort by model or price
+    if (!isSortedByModal && !isSortedByPrice) {
+      setRequestedProducts(products);
     }
-  }, [selectedPriceOrder]);
-
-  //Check on sorting by modal
-  useEffect(() => {
-    if (isSortedByModal) {
+    //check if sorting
+    if (isSortedByModal || isSortedByPrice) {
+      //Always check filter by model first
+      //If there is a selected model, filter
       if (selectedModal) {
         const tempProducts = products.filter((product) =>
           product.modals.includes(selectedModal)
         );
-        setRequestedProducts(tempProducts);
-      } else {
-        setRequestedProducts(products);
+        //check if also sort by price
+        if (isSortedByPrice) {
+          if (selectedPriceOrder === "Low to High") {
+            tempProducts.sort((a, b) => a.price - b.price);
+            return setRequestedProducts(tempProducts);
+          } else if (selectedPriceOrder === "High to Low") {
+            tempProducts.sort((a, b) => b.price - a.price);
+            return setRequestedProducts(tempProducts);
+          } else {
+            return setRequestedProducts(tempProducts);
+          }
+        }
+        // if not, return filtered products
+        else {
+          return setRequestedProducts(tempProducts);
+        }
+      }
+      // if no selected model, check if filtering by price
+      else {
+        if (isSortedByPrice) {
+          const tempProducts = products.map((product) => product);
+          if (selectedPriceOrder === "Low to High") {
+            tempProducts.sort((a, b) => a.price - b.price);
+            return setRequestedProducts(tempProducts);
+          } else if (selectedPriceOrder === "High to Low") {
+            tempProducts.sort((a, b) => b.price - a.price);
+            return setRequestedProducts(tempProducts);
+          } else {
+            setRequestedProducts(tempProducts);
+          }
+        }
       }
     }
-  }, [selectedModal]);
+  }, [selectedModal, selectedPriceOrder]);
+
+  //Check on sorting by price
+  // useEffect(() => {
+  //   if (isSortedByPrice) {
+  //     const tempProducts = products.map((product) => product);
+  //     if (selectedPriceOrder === "Low to High") {
+  //       tempProducts.sort((a, b) => a.price - b.price);
+  //       return setRequestedProducts(tempProducts);
+  //     } else if (selectedPriceOrder === "High to Low") {
+  //       tempProducts.sort((a, b) => b.price - a.price);
+  //       return setRequestedProducts(tempProducts);
+  //     } else {
+  //       setRequestedProducts(tempProducts);
+  //     }
+  //   }
+  // }, [selectedPriceOrder]);
+
+  //Check on sorting by modal
+  // useEffect(() => {
+  //   if (isSortedByModal) {
+  //     if (selectedModal) {
+  //       const tempProducts = products.filter((product) =>
+  //         product.modals.includes(selectedModal)
+  //       );
+  //       setRequestedProducts(tempProducts);
+  //     } else {
+  //       setRequestedProducts(products);
+  //     }
+  //   }
+  // }, [selectedModal]);
 
   if (loading) {
     return <Loader />;
