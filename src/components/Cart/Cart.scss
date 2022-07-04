@@ -2,24 +2,44 @@
 @use "../../styles/variables" as *;
 
 .cart {
-  @include flex-layout(column, flex-start, center);
-  position: absolute;
-  background-color: white;
-  top: 2.5rem;
-  right: -100%;
-  height: calc(100vh - 2.5rem);
-  width: 100%;
-  z-index: 1;
+  &__overlay {
+    display: none;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.4);
+    top: 2.5rem;
+    right: -100%;
+    height: calc(100vh - 2.5rem);
+    width: 100%;
+    z-index: 1;
+    @include transition;
 
-  @include transition;
+    &--active {
+      right: 0;
+    }
 
-  @include desktop {
-    max-width: 26vw;
+    @include desktop {
+      display: block;
+    }
   }
 
-  &--active {
+  &__content {
+    @include flex-layout(column, flex-start, center);
+    position: absolute;
+    top: 2.5rem;
+    background-color: white;
+    right: -100%;
+    height: calc(100vh - 2.5rem);
+    width: 100%;
+    z-index: 2;
     @include transition;
-    right: 0;
+
+    @include desktop {
+      max-width: 26vw;
+    }
+
+    &--active {
+      right: 0;
+    }
   }
 
   &__title {

@@ -67,14 +67,26 @@ const Cart = ({
   });
 
   return (
-    <div className={`cart ${isCartClicked ? "cart--active" : ""} `}>
-      <CloseButton handleClick={setIsCartClicked} />
-      <h4 className="cart__title">Your Cart</h4>
-      <div className="cart__products">{productsInCart}</div>
-      <p className="cart__total">Total: ${getTotal(cart)}</p>
-      <Link to="#" className="cart__checkout">
-        Check Out
-      </Link>
+    <div className="cart">
+      <div
+        className={`cart__overlay ${
+          isCartClicked ? "cart__overlay--active" : ""
+        } `}
+        onClick={() => setIsCartClicked()}
+      ></div>
+      <div
+        className={`cart__content ${
+          isCartClicked ? "cart__content--active" : ""
+        } `}
+      >
+        <CloseButton handleClick={setIsCartClicked} />
+        <h4 className="cart__title">Your Cart</h4>
+        <div className="cart__products">{productsInCart}</div>
+        <p className="cart__total">Total: ${getTotal(cart)}</p>
+        <Link to="#" className="cart__checkout">
+          Check Out
+        </Link>
+      </div>
     </div>
   );
 };

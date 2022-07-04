@@ -127,11 +127,25 @@ const Login = ({ isLoginClicked, setIsLoginClicked }) => {
   );
 
   return (
-    <div className={`login ${isLoginClicked ? "login--active" : ""} `}>
-      <CloseButton handleClick={setIsLoginClicked} />
-      <ul className="login__items">
-        {currentUser ? singedInElement() : signInElement}
-      </ul>
+    <div className="login">
+      <div
+        className={`login__overlay ${
+          isLoginClicked ? "login__overlay--active" : ""
+        } `}
+        onClick={() => {
+          setIsLoginClicked();
+        }}
+      ></div>
+      <div
+        className={`login__content ${
+          isLoginClicked ? "login__content--active" : ""
+        } `}
+      >
+        <CloseButton handleClick={setIsLoginClicked} />
+        <ul className="login__items">
+          {currentUser ? singedInElement() : signInElement}
+        </ul>
+      </div>
     </div>
   );
 };
