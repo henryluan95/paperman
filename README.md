@@ -4,6 +4,8 @@
 
 This project is a redesigned website for Paperman. This version focuses on improving the UX/UI aspect of the website with the end goal of generating more profit from online purchases.
 
+Please click here for the live website: https://paperman.vercel.app/
+
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
 ## Project Screenshot
