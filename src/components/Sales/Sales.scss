@@ -19,6 +19,37 @@
     @include desktop {
       max-width: 25rem;
     }
+
+    &-container {
+      position: relative;
+
+      &:hover {
+        .sales__img-button {
+          opacity: 1;
+        }
+      }
+    }
+
+    &-button {
+      @include link-reset;
+      width: 10rem;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 0.5rem 0.5rem;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 1rem;
+      cursor: pointer;
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 400;
+      opacity: 0;
+      z-index: 2;
+      color: $drk-blue;
+      border: none;
+      @include transition;
+    }
   }
 
   &__info {
