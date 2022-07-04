@@ -16,6 +16,7 @@ const Inspiration = () => {
         className="inspiration__photo"
         src={photo.image}
         alt="Client's instagram photo"
+        key={photo.id}
       ></img>
     );
   });
