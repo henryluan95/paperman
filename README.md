@@ -6,6 +6,11 @@ This project is a redesigned website for Paperman. This version focuses on impro
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
+## Screenshots
+
+![App Screenshot](https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/Final.jpg?alt=media&token=cf4fcafb-570f-467b-ba83-99be77dda25c)
+
+
 ## Tech Stacks
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
@@ -40,4 +45,4 @@ Henry Luan [@henryluan](https://github.com/henryluan95)
 
 ## Acknowledgements
 
-- The Educators, Teaching Assistants and staff at BrainStation, Toronto - Thank you for all your support!
+- The Educators and Teaching Assistants at BrainStation, Toronto - Thank you for all your support!
