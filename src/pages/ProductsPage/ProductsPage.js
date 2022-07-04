@@ -1,20 +1,29 @@
 import "./ProductsPage.scss";
 import React, { useEffect, useRef, useState } from "react";
 import Products from "../../components/Products/Products";
-import { productsColRef } from "../../firebase";
+import { productsColRef, first } from "../../firebase";
 import useCollection from "../../hooks/useCollection";
 import Loader from "../../components/Loader/Loader";
+import {
+  query,
+  startAfter,
+  limit,
+  getDocs,
+  endBefore,
+  limitToLast,
+  orderBy,
+} from "firebase/firestore";
 
 const ProductsPage = () => {
   const [isSortedByPrice, setIsSortedByPrice] = useState(false);
   const [isSortedByModal, setIsSortedByModal] = useState(false);
   const [selectedPriceOrder, setSelectedPriceOrder] = useState("");
   const [selectedModal, setSelectedModal] = useState("");
-  const { products, loading } = useCollection(productsColRef);
+  const { products, loading, snapshot } = useCollection(first);
   const [requestedProducts, setRequestedProducts] = useState(null);
-
-  const priceSelectionEl = useRef(null);
-  const modalSelectionEl = useRef(null);
+  const [productsOnCurrentPage, setProductsOnCurrentPage] = useState(null);
+  const [snapshotTracker, setSnapshotTracker] = useState(null);
+  const [isLastPage, setIsLastPage] = useState(false);
 
   //Create functions to track sorting methods
   const handlePriceSorting = (e) => {
@@ -26,9 +35,8 @@ const ProductsPage = () => {
       setIsSortedByPrice(false);
       setSelectedPriceOrder("");
     }
-    // setIsSortedByModal(false);
-    // modalSelectionEl.current.value = "";
   };
+
   const handleModalSearching = (e) => {
     if (e.target.value) {
       setIsSortedByModal(true);
@@ -37,8 +45,34 @@ const ProductsPage = () => {
       setIsSortedByModal(false);
       setSelectedModal("");
     }
-    // setIsSortedByPrice(false);
-    // priceSelectionEl.current.value = "";
+  };
+
+  //Create a function to get the next set of products
+  const nextProducts = async () => {
+    const lastVisible = snapshotTracker.docs[snapshotTracker.docs.length - 1];
+    const nextQuery = query(productsColRef, startAfter(lastVisible), limit(9));
+    const nextProducts = await getDocs(nextQuery);
+
+    const tempProducts = [];
+    nextProducts.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
+      tempProducts.push({ ...doc.data(), id: doc.id });
+    });
+
+    console.log(nextProducts.docs.length);
+
+    //Check if it's last
+    if (nextProducts.docs.length === 9) {
+      tempProducts.pop();
+    } else {
+      setIsLastPage(true);
+    }
+
+    //Keep track of requested product and products on current page for filtering purposes
+    setRequestedProducts(requestedProducts.concat(tempProducts));
+    setProductsOnCurrentPage(requestedProducts.concat(tempProducts));
+    //keep track of current snapshot to continue paginating
+    setSnapshotTracker(nextProducts);
   };
 
   //Set page title
@@ -46,23 +80,25 @@ const ProductsPage = () => {
     document.title = "Products | Paperman";
   }, []);
 
-  //Set up initial products
+  //Set up initial products and snapshot on load
   useEffect(() => {
     setRequestedProducts(products);
+    setProductsOnCurrentPage(products);
+    setSnapshotTracker(snapshot);
   }, [products]);
 
   //Check condition for filter and sorting
   useEffect(() => {
     //there is no sort by model or price
     if (!isSortedByModal && !isSortedByPrice) {
-      setRequestedProducts(products);
+      setRequestedProducts(productsOnCurrentPage);
     }
     //check if sorting
     if (isSortedByModal || isSortedByPrice) {
       //Always check filter by model first
       //If there is a selected model, filter
       if (selectedModal) {
-        const tempProducts = products.filter((product) =>
+        const tempProducts = productsOnCurrentPage.filter((product) =>
           product.modals.includes(selectedModal)
         );
         //check if also sort by price
@@ -85,7 +121,7 @@ const ProductsPage = () => {
       // if no selected model, check if filtering by price
       else {
         if (isSortedByPrice) {
-          const tempProducts = products.map((product) => product);
+          const tempProducts = productsOnCurrentPage.map((product) => product);
           if (selectedPriceOrder === "Low to High") {
             tempProducts.sort((a, b) => a.price - b.price);
             return setRequestedProducts(tempProducts);
@@ -99,36 +135,6 @@ const ProductsPage = () => {
       }
     }
   }, [selectedModal, selectedPriceOrder]);
-
-  //Check on sorting by price
-  // useEffect(() => {
-  //   if (isSortedByPrice) {
-  //     const tempProducts = products.map((product) => product);
-  //     if (selectedPriceOrder === "Low to High") {
-  //       tempProducts.sort((a, b) => a.price - b.price);
-  //       return setRequestedProducts(tempProducts);
-  //     } else if (selectedPriceOrder === "High to Low") {
-  //       tempProducts.sort((a, b) => b.price - a.price);
-  //       return setRequestedProducts(tempProducts);
-  //     } else {
-  //       setRequestedProducts(tempProducts);
-  //     }
-  //   }
-  // }, [selectedPriceOrder]);
-
-  //Check on sorting by modal
-  // useEffect(() => {
-  //   if (isSortedByModal) {
-  //     if (selectedModal) {
-  //       const tempProducts = products.filter((product) =>
-  //         product.modals.includes(selectedModal)
-  //       );
-  //       setRequestedProducts(tempProducts);
-  //     } else {
-  //       setRequestedProducts(products);
-  //     }
-  //   }
-  // }, [selectedModal]);
 
   if (loading) {
     return <Loader />;
@@ -144,7 +150,6 @@ const ProductsPage = () => {
             name="price-selection"
             id="price-selection"
             onChange={handlePriceSorting}
-            ref={priceSelectionEl}
           >
             <option className="view__price-option" value="">
               Sort by Price
@@ -165,7 +170,6 @@ const ProductsPage = () => {
             name="modals-selection"
             id="modals-selection"
             onChange={handleModalSearching}
-            ref={modalSelectionEl}
           >
             <option className="product-detail__modal-option" value="">
               --Please choose a phone modal--
@@ -193,7 +197,11 @@ const ProductsPage = () => {
       </div>
       <h2 className="view__title">All Products</h2>
       <div className="line view__line "></div>
-      <Products products={requestedProducts ?? products} />
+      <Products
+        products={requestedProducts ?? products}
+        nextProducts={nextProducts}
+        isLastPage={isLastPage}
+      />
     </div>
   );
 };

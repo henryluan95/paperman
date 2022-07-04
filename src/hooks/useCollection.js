@@ -5,21 +5,19 @@ import { useEffect, useState } from "react";
 const useCollection = (colRef) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [snapshot, setSnapshot] = useState(null);
 
   useEffect(() => {
     //Using async function to set loading state
     const fetchProducts = async () => {
       try {
         const unsubscribe = onSnapshot(colRef, (snapshot) => {
+          setSnapshot(snapshot);
           const tempProducts = [];
           snapshot.docs.forEach((doc) => {
             tempProducts.push({ ...doc.data(), id: doc.id });
           });
-          setProducts(
-            tempProducts.sort((productA, productB) =>
-              productA.title - productB.title ? 1 : -1
-            )
-          );
+          setProducts(tempProducts.reverse());
         });
         return () => unsubscribe();
       } catch (err) {
@@ -30,7 +28,7 @@ const useCollection = (colRef) => {
     };
     fetchProducts();
   }, []);
-  return { products, loading };
+  return { products, loading, snapshot };
 };
 
 export default useCollection;

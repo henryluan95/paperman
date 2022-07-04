@@ -23,7 +23,8 @@
     }
   }
 
-  &__view-all {
+  &__view-all,
+  &__view-next {
     width: 8rem;
     background: none;
     @include link-reset;
@@ -33,6 +34,10 @@
       background-color: $drk-blue;
       color: white;
     }
+  }
+
+  &__view-next {
+    margin: 2rem 0 0 0;
   }
 }
 

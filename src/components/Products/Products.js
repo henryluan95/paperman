@@ -7,7 +7,7 @@ import { db } from "../../firebase";
 import { doc, updateDoc } from "firebase/firestore";
 import HeartBrokenIcon from "@mui/icons-material/HeartBroken";
 
-const Products = ({ products }) => {
+const Products = ({ products, nextProducts, isLastPage, isFirstPage }) => {
   //get Products component current url to display/not display Categories section
   const location = useLocation();
   const [isOnSamePage, setIsOnSamePage] = useState(true);
@@ -58,6 +58,14 @@ const Products = ({ products }) => {
           <Link to="/products" className="button products__view-all">
             View All
           </Link>
+        )}
+        {location.pathname !== "/" && !isLastPage && (
+          <button
+            className="button products__view-next"
+            onClick={() => nextProducts()}
+          >
+            More
+          </button>
         )}
       </div>
     </div>
