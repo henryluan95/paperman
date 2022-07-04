@@ -5,6 +5,7 @@ import { collection } from "firebase/firestore";
 
 import React from "react";
 import Loader from "../Loader/Loader";
+import { Link } from "react-router-dom";
 
 const Inspiration = () => {
   const clientRef = collection(db, "clients-photos");
@@ -12,12 +13,14 @@ const Inspiration = () => {
 
   const clientPhotosEl = clientsPhotos.map((photo) => {
     return (
-      <img
-        className="inspiration__photo"
-        src={photo.image}
-        alt="Client's instagram photo"
-        key={photo.id}
-      ></img>
+      <a href={photo.insta} target="_blank">
+        <img
+          className="inspiration__photo"
+          src={photo.image}
+          alt="Client's instagram photo"
+          key={photo.id}
+        ></img>
+      </a>
     );
   });
 

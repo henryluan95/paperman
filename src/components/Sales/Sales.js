@@ -1,6 +1,7 @@
 import "./Sales.scss";
 
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Sales = () => {
   //Setup sales future day countdown
@@ -8,7 +9,7 @@ const Sales = () => {
   const currentYear = currentDate.getFullYear();
   const currentMonth = currentDate.getMonth();
   const currentDay = currentDate.getDate();
-  const futureDate = new Date(currentYear, currentMonth, currentDay + 2, 0, 0);
+  const futureDate = new Date(currentYear, currentMonth, currentDay + 2, 15, 0);
 
   //calculate time distance
   function getRemainingTime() {
@@ -45,11 +46,19 @@ const Sales = () => {
 
   return (
     <section className="sales">
-      <img
-        className="sales__img"
-        src="https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/sales-image.jpg?alt=media&token=2c1b97e9-b802-4e94-a643-da3a687b0f9f"
-        alt="sale"
-      />
+      <div className="sales__img-container">
+        <img
+          className="sales__img"
+          src="https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/sales-image.jpg?alt=media&token=2c1b97e9-b802-4e94-a643-da3a687b0f9f"
+          alt="sale"
+        />
+        <Link
+          to={`/product/0eS63Py3D3fblF6WoxcR`}
+          className="button sales__img-button"
+        >
+          View Product
+        </Link>
+      </div>
 
       <div className="sales__info">
         <h2 className="sales__title">DEAL OF THE WEEK</h2>
