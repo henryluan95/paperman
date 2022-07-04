@@ -4,12 +4,19 @@
 
 This project is a redesigned website for Paperman. This version focuses on improving the UX/UI aspect of the website with the end goal of generating more profit from online purchases.
 
+Please click here for the live website: https://paperman.vercel.app/
+
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
-## Screenshots
+## Project Screenshot
 
 ![App Screenshot](https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/Final.jpg?alt=media&token=cf4fcafb-570f-467b-ba83-99be77dda25c)
 
+
+### Current Website
+
+![Old Website Design](https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/paperman-og%2FPaperman-OG1.png?alt=media&token=03cb08a1-8219-4562-a16b-c1127fc9c122)
+![Old Website Design](https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/paperman-og%2FPaperman-OG3.png?alt=media&token=e1d40f1f-a06d-4ac0-8b74-9a7bcff7f370)
 
 ## Tech Stacks
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
@@ -20,6 +27,17 @@ This project is a redesigned website for Paperman. This version focuses on impro
 ![Firebase](https://img.shields.io/badge/Firebase-039BE5?style=for-the-badge&logo=Firebase&logoColor=white)
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 ![Adobe Lightroom](https://img.shields.io/badge/Adobe%20Lightroom-31A8FF.svg?style=for-the-badge&logo=Adobe%20Lightroom&logoColor=white)
+
+## Current Issues
+Issue 1: There is no call to action on the current website to engage customers.
+
+Issue 2: Current design is too crowded and distracting.
+
+Issue 3: There is no phone model filter.
+
+Issue 4: Customers can’t like a product to view all their liked products before finalizing their purchase.
+
+Issue 5: There is no website accessibility. 
 
 
 ## Installation
@@ -36,7 +54,20 @@ $ cd paperman
 $ npm install
 ```
 
-3. Start React App
+3. Set environment variables
+
+   Create a `.env` file and change placeholder values with your own. 
+
+```bash
+  apiKey: <API_KEY>,
+  authDomain: <AUTH_DOMAIN>,
+  projectId: <PROJECT_ID>,
+  storageBucket: <STORAGE_BUCKET>,
+  messagingSenderId: <MESSAGING_SENDER_ID>,
+  appId: <APP_ID>,
+```
+
+4. Start React App
 ```$ npm start```
 
 ## Author
