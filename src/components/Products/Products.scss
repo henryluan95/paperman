@@ -64,6 +64,10 @@
   &__dislike {
     color: $drk-pink;
     cursor: pointer;
+
+    &:hover {
+      transform: scale(0.8);
+    }
   }
 
   &__button {

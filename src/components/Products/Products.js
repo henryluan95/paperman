@@ -59,7 +59,7 @@ const Products = ({ products, nextProducts, isLastPage, isFirstPage }) => {
             View All
           </Link>
         )}
-        {location.pathname !== "/" && !isLastPage && (
+        {location.pathname === "/products" && !isLastPage && (
           <button
             className="button products__view-next"
             onClick={() => nextProducts()}
