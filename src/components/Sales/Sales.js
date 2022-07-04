@@ -36,12 +36,12 @@ const Sales = () => {
   const [timeRemaining, setTimeRemaining] = useState(getRemainingTime());
   const [days, hours, minutes, seconds] = timeRemaining;
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setTimeRemaining(getRemainingTime());
-  //   }, 1000);
-  //   return () => clearTimeout(timer);
-  // });
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setTimeRemaining(getRemainingTime());
+    }, 1000);
+    return () => clearTimeout(timer);
+  });
 
   return (
     <section className="sales">
