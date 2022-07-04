@@ -9,6 +9,7 @@ import Contact from "../../components/Contact/Contact";
 import Loader from "../../components/Loader/Loader";
 import { first } from "../../firebase";
 import useCollection from "../../hooks/useCollection";
+import Inspiration from "../../components/Inspiration/Inspiration";
 
 const HomePage = () => {
   const { products, loading } = useCollection(first);
@@ -29,6 +30,7 @@ const HomePage = () => {
       <Trending />
       <Sales />
       <Products products={products} />
+      <Inspiration />
       <Contact />
     </>
   );

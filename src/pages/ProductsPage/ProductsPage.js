@@ -4,15 +4,7 @@ import Products from "../../components/Products/Products";
 import { productsColRef, first } from "../../firebase";
 import useCollection from "../../hooks/useCollection";
 import Loader from "../../components/Loader/Loader";
-import {
-  query,
-  startAfter,
-  limit,
-  getDocs,
-  endBefore,
-  limitToLast,
-  orderBy,
-} from "firebase/firestore";
+import { query, startAfter, limit, getDocs } from "firebase/firestore";
 
 const ProductsPage = () => {
   const [isSortedByPrice, setIsSortedByPrice] = useState(false);

@@ -1,0 +1,39 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixin" as *;
+
+.inspiration {
+  padding: 1rem;
+  @include flex-layout(column, center, center);
+
+  &__title {
+    font-size: 3rem;
+    font-family: $text;
+    font-weight: 400;
+    color: $drk-blue;
+    text-align: center;
+  }
+
+  &__line {
+    margin-bottom: 2rem;
+  }
+
+  &__photos {
+    width: 100%;
+    @include flex-layout(row, center, center);
+    flex-wrap: wrap;
+    overflow: hidden;
+
+    @include tablet {
+      column-gap: 1rem;
+    }
+  }
+
+  &__photo {
+    height: 20rem;
+    width: 20rem;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    @include tablet {
+    }
+  }
+}
