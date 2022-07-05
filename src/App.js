@@ -6,6 +6,7 @@ import ProductDetailPage from "./pages/ProductDetailPage/ProductDetailPage";
 import Footer from "./components/Footer/Footer";
 import ProductsPage from "./pages/ProductsPage/ProductsPage";
 import LikedPage from "./pages/LikedPage/LikedPage";
+import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 import getCurrentCart from "./util/getCurrentCart";
 import { useState, createContext, useEffect } from "react";
 import FocusBar from "./components/FocusBar/FocusBar";
@@ -127,6 +128,7 @@ function App() {
           </Route>
           <Route path="/products" component={ProductsPage} />
           <Route path="/liked" component={LikedPage} />
+          <Route path="/checkout" component={CheckoutPage}></Route>
           <Route exact path="/" component={HomePage} />
         </Switch>
         <Footer />

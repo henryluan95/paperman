@@ -70,17 +70,27 @@
 
   &__accessibility-icon {
     position: fixed;
-    bottom: 5rem;
-    right: 3rem;
+    bottom: 1rem;
+    right: 1rem;
     border: 1px solid $acces;
     border-radius: 50%;
     background-color: white;
     color: $acces;
     cursor: pointer;
-    transform: scale(2);
+    transform: scale(1.5);
 
     &:hover {
-      transform: scale(1.8);
+      transform: scale(1.3);
+    }
+
+    @include tablet {
+      bottom: 5rem;
+      right: 3rem;
+      transform: scale(2);
+
+      &:hover {
+        transform: scale(1.8);
+      }
     }
   }
 }

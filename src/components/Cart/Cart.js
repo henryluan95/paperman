@@ -83,7 +83,11 @@ const Cart = ({
         <h4 className="cart__title">Your Cart</h4>
         <div className="cart__products">{productsInCart}</div>
         <p className="cart__total">Total: ${getTotal(cart)}</p>
-        <Link to="#" className="cart__checkout">
+        <Link
+          to="/checkout"
+          className="cart__checkout"
+          onClick={() => setIsCartClicked()}
+        >
           Check Out
         </Link>
       </div>

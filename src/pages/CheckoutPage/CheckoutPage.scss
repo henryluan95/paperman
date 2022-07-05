@@ -1,0 +1,160 @@
+@use "../../styles/mixin" as *;
+@use "../../styles/variables" as *;
+
+.checkout-page {
+  margin-top: $nav-height;
+  @include flex-layout(column, flex-start, center);
+  min-height: calc(100vh - $nav-height - 2.45rem);
+}
+
+.checkout {
+  @include flex-layout(column, center, center);
+  width: 100%;
+  padding: 0 1rem;
+  max-width: 86rem;
+  margin: 0 auto;
+
+  @include desktop {
+    padding: 0 3rem;
+  }
+
+  &__content {
+    margin: 2rem 0;
+    width: 100%;
+
+    @include desktop {
+      @include flex-layout(row, center, flex-start);
+      gap: 1rem;
+    }
+  }
+
+  &__title {
+    margin-top: 1rem;
+    font-size: 3rem;
+    font-family: $text;
+    font-weight: 400;
+    color: $drk-blue;
+    text-align: center;
+  }
+
+  &__items {
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 2rem;
+
+    @include desktop {
+      order: 2;
+      flex: 1;
+    }
+  }
+
+  &__item {
+    @include flex-layout(row, flex-start, stretch);
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  &__info {
+    @include flex-layout(column, space-between, center);
+    width: 100%;
+    margin-left: 1rem;
+  }
+
+  &__img {
+    width: 5rem;
+  }
+
+  &__header {
+    @include flex-layout(row, space-between, flex-start);
+    width: 100%;
+  }
+
+  &__item-title {
+    color: $drk-blue;
+    width: 6rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__item-price {
+    font-size: 0.85rem;
+    color: $drk-blue;
+  }
+
+  &__item-modal {
+    width: 100%;
+    font-size: 0.85rem;
+    color: $grey-blue;
+  }
+
+  &__item-quantity {
+    @extend .checkout__item-modal;
+  }
+
+  &__subtotal,
+  &__discount,
+  &__shipping {
+    color: $drk-blue;
+    font-size: 1rem;
+    font-size: 0.85rem;
+    @include flex-layout(row, space-between, center);
+  }
+
+  &__line {
+    max-height: 0.08rem;
+    margin: 1rem 0 1rem -1rem;
+    background-color: $grey-blue;
+    width: 120%;
+  }
+
+  &__total {
+    @include flex-layout(row, space-between, center);
+    color: $drk-blue;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  &__forms {
+    @include flex-layout(column, flex-start, stretch);
+    gap: 1rem;
+
+    @include desktop {
+      order: 1;
+      flex: 2;
+    }
+  }
+}
+
+.shipping {
+  @include flex-layout(column, center, flex-start);
+
+  &__title {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    @include tablet {
+      margin-top: 0.5rem;
+    }
+  }
+
+  &__label {
+    @include flex-layout(column);
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  &__input {
+    height: 2.25rem;
+    width: 100%;
+    padding: 0 1rem;
+    margin: 4px 0;
+    border-radius: 1.25rem;
+    border: 1px $drk-blue solid;
+    outline: none;
+    font-family: inherit;
+
+    @include desktop {
+      max-width: 40rem;
+    }
+  }
+}
