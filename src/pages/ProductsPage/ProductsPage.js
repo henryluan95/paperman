@@ -175,6 +175,12 @@ const ProductsPage = () => {
             >
               iPhone 7 Plus
             </option>
+            <option className="product-detail__modal-option" value="iPhone 8">
+              iPhone 8
+            </option>
+            <option className="product-detail__modal-option" value="iPhone 9">
+              iPhone 9
+            </option>
             <option className="product-detail__modal-option" value="iPhone X">
               iPhone X
             </option>
