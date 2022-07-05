@@ -52,7 +52,9 @@ const CheckoutPage = () => {
         <div className="checkout__info">
           <div className="checkout__header">
             <p className="checkout__item-title">{product.title}</p>
-            <p className="checkout__item-price">${subtotal}</p>
+            <p className="checkout__item-price">
+              ${(Number(product.price) * product.quantity).toFixed(2)}
+            </p>
           </div>
           <p className="checkout__item-modal">Modal: {product.modals}</p>
           <p className="checkout__item-quantity">
