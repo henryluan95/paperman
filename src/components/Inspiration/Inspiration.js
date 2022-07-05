@@ -13,12 +13,11 @@ const Inspiration = () => {
 
   const clientPhotosEl = clientsPhotos.map((photo) => {
     return (
-      <a href={photo.insta} target="_blank">
+      <a href={photo.insta} target="_blank" key={photo.id}>
         <img
           className="inspiration__photo"
           src={photo.image}
           alt="Client's instagram photo"
-          key={photo.id}
         ></img>
       </a>
     );
