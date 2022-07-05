@@ -19,9 +19,10 @@ const Cart = ({
   const getTotal = (products) => {
     let total = 0;
     products.forEach((product) => {
-      total += product.price * product.quantity;
+      total += Number(product.price) * product.quantity;
     });
-    return total.toFixed(2);
+    const formattedTotal = (Math.round(total * 100) / 100).toFixed(2);
+    return formattedTotal;
   };
 
   const productsInCart = cart.map((product) => {

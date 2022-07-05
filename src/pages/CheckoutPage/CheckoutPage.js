@@ -1,5 +1,5 @@
 import "./CheckoutPage.scss";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ProductsContext } from "../../App";
 import { v4 as uuid } from "uuid";
 import visa from "../../assets/images/visa.svg";
@@ -11,17 +11,23 @@ import jcb from "../../assets/images/jcb.png";
 const CheckoutPage = () => {
   const cart = useContext(ProductsContext);
   const [isSameAsShipping, setIsSameAsShipping] = useState(true);
+  const [subtotal, setSubtotal] = useState(0);
 
   //Create a function to track subtotal
   const findSubtotal = () => {
     let subtotal = 0;
-    cart.forEach((product) => (subtotal += product.price * product.quantity));
-    return subtotal;
+    cart.forEach(
+      (product) => (subtotal += Number(product.price) * product.quantity)
+    );
+    let formattedSubtotal = (Math.round(subtotal * 100) / 100).toFixed(2);
+    return setSubtotal(Number(formattedSubtotal));
   };
 
   //Create a function to track total
   const findTotal = (subtotal, discount = 0, shipping = 0) => {
-    return subtotal - discount + shipping;
+    const total = subtotal - discount + shipping;
+    let formattedTotal = (Math.round(total * 100) / 100).toFixed(2);
+    return formattedTotal;
   };
 
   //Create a function to keep track of billing refill checkbox
@@ -46,9 +52,7 @@ const CheckoutPage = () => {
         <div className="checkout__info">
           <div className="checkout__header">
             <p className="checkout__item-title">{product.title}</p>
-            <p className="checkout__item-price">
-              {product.price * product.quantity}
-            </p>
+            <p className="checkout__item-price">${subtotal}</p>
           </div>
           <p className="checkout__item-modal">Modal: {product.modals}</p>
           <p className="checkout__item-quantity">
@@ -58,6 +62,10 @@ const CheckoutPage = () => {
       </div>
     );
   });
+
+  useEffect(() => {
+    findSubtotal();
+  }, [checkingOutProducts]);
 
   return (
     <div className="checkout-page">
@@ -69,14 +77,14 @@ const CheckoutPage = () => {
             {checkingOutProducts}
             <div className="checkout__subtotal">
               <span>Subtotal:</span>
-              <span>${findSubtotal()}</span>
+              <span>${subtotal.toFixed(2)}</span>
             </div>
             <p className="checkout__discount">Discount: </p>
             <p className="checkout__shipping">Shipping: </p>
             <div className="line checkout__line "></div>
             <div className="checkout__total">
               <span>Total:</span>
-              <span>${findTotal(findSubtotal())}</span>
+              <span>${findTotal(subtotal)}</span>
             </div>
           </div>
           <form className="checkout__forms" onSubmit={handleSubmit}>
