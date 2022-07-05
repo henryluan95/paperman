@@ -23,9 +23,15 @@
     padding: 1rem 1rem;
     border: 0.125rem $drk-blue dashed;
     font-weight: 700;
+    cursor: pointer;
 
     @include tablet {
       max-width: 20rem;
+    }
+
+    &--email {
+      @include link-reset;
+      color: $drk-blue;
     }
   }
 

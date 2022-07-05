@@ -30,13 +30,6 @@ const ProductDetail = ({ product, addProduct }) => {
     return setModalSelectionError(false);
   };
 
-  //Keep track of document
-  // useEffect(() => {
-  //   const unsub = onSnapshot(doc(db, "cities", "SF"), (doc) => {
-  //     console.log("Current data: ", doc.data());
-  //   });
-  // });
-
   //Set page title
   useEffect(() => {
     document.title = `${product.title || "Product"} | Paperman`;
