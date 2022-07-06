@@ -81,7 +81,21 @@ function App() {
   const reduceProduct = (selectedProduct, selectedModal) => {
     setCart(
       cart
-        .filter((productInCart) => productInCart.quantity !== 1)
+        .filter((productInCart) => {
+          if (productInCart.id !== selectedProduct.id) {
+            return true;
+          } else {
+            if (productInCart.modals !== selectedModal) {
+              return true;
+            } else {
+              if (productInCart.quantity !== 1) {
+                return true;
+              } else {
+                return false;
+              }
+            }
+          }
+        })
         .map((productInCart) => {
           if (
             productInCart.id === selectedProduct.id &&
