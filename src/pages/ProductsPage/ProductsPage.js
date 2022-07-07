@@ -164,7 +164,7 @@ const ProductsPage = () => {
             onChange={handleModalSearching}
           >
             <option className="product-detail__modal-option" value="">
-              --Please choose a phone modal--
+              --Please choose a phone model--
             </option>
             <option className="product-detail__modal-option" value="iPhone 7">
               iPhone 7
