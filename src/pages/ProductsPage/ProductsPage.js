@@ -42,7 +42,7 @@ const ProductsPage = () => {
   //Create a function to get the next set of products
   const nextProducts = async () => {
     const lastVisible = snapshotTracker.docs[snapshotTracker.docs.length - 1];
-    const nextQuery = query(productsColRef, startAfter(lastVisible), limit(11));
+    const nextQuery = query(productsColRef, startAfter(lastVisible), limit(9));
     const nextProducts = await getDocs(nextQuery);
 
     const tempProducts = [];
@@ -54,7 +54,7 @@ const ProductsPage = () => {
     console.log(nextProducts.docs.length);
 
     //Check if it's last
-    if (nextProducts.docs.length === 11) {
+    if (nextProducts.docs.length === 9) {
       tempProducts.pop();
     } else {
       setIsLastPage(true);

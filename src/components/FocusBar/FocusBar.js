@@ -7,9 +7,10 @@ const FocusBar = () => {
 
   const onMouseMove = (e) => {
     topBar.current.style.left = e.pageX + "px";
-    topBar.current.style.top = e.pageY + 850 + "px";
+    topBar.current.style.top = e.pageY + 650 + "px";
     bottomBar.current.style.left = e.pageX + "px";
-    bottomBar.current.style.top = e.pageY - 850 + "px";
+    bottomBar.current.style.top = e.pageY - 650 + "px";
+    console.log(e.pageY);
   };
 
   useEffect(() => {

@@ -24,4 +24,4 @@ export const auth = getAuth();
 export const productsColRef = collection(db, "products");
 
 //query for first set of document
-export const first = query(productsColRef, limit(10));
+export const first = query(productsColRef, limit(8));
