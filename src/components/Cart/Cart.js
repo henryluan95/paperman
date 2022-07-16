@@ -58,7 +58,7 @@ const Cart = ({
                 +
               </button>
             </div>
-            <p className="cart__product-modal">Modal: {product.modals}</p>
+            <p className="cart__product-modal">Model: {product.modals}</p>
             <p className="cart__product-price">{product.price}</p>
           </div>
         </div>
