@@ -2,9 +2,15 @@
 
 **Paperman is an ecommerce shop for iPhone cases focusing on high quality and fashionable cases!**
 
-This project is a redesigned website for Paperman. This version focuses on improving the UX/UI aspect of the website with the end goal of generating more profit from online purchases.
+This project is a redesigned website for Paperman. This version focuses on improving the UX/UI aspect of the website by adding web accessibility, call to actions and implementing cleaner design, better user interactions.
 
 Please click here for the live website: https://paperman.vercel.app/
+
+You can watch my live demos right here:
+
+. Short version: https://www.loom.com/share/fa1cab621d5e407e98bb90c09c90e876
+
+. Detailed version: https://www.loom.com/share/679ce3eb2f4f46d083c5189c4c64bd97
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
