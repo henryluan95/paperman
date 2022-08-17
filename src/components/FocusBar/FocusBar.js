@@ -7,9 +7,9 @@ const FocusBar = () => {
 
   const onMouseMove = (e) => {
     topBar.current.style.left = e.clientX + "px";
-    topBar.current.style.top = e.clientY - 650 + "px";
+    topBar.current.style.top = e.clientY - 120 + "px";
     bottomBar.current.style.left = e.clientX + "px";
-    bottomBar.current.style.top = e.clientY + 650 + "px";
+    bottomBar.current.style.top = e.clientY + 120 + "px";
   };
 
   useEffect(() => {
@@ -23,11 +23,7 @@ const FocusBar = () => {
   return (
     <>
       <div ref={topBar} className="focus-bar__top"></div>
-      <div
-        ref={bottomBar}
-        className="focus-bar__bottom"
-        // style={{ backgroundColor: "Orange" }}
-      ></div>
+      <div ref={bottomBar} className="focus-bar__bottom"></div>
     </>
   );
 };
