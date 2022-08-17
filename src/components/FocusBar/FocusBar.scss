@@ -1,6 +1,6 @@
 .focus-bar {
   &__top {
-    position: absolute;
+    position: fixed;
     transform: translate(-50%, -50%);
     height: 150vh;
     width: 300%;
@@ -9,7 +9,7 @@
   }
 
   &__bottom {
-    position: absolute;
+    position: fixed;
     transform: translate(-50%, -50%);
     height: 150vh;
     width: 300%;
