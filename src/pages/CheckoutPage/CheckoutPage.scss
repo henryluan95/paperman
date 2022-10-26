@@ -23,7 +23,7 @@
     width: 100%;
 
     @include desktop {
-      @include flex-layout(row, center, flex-start);
+      @include flex-layout(row, center, stretch);
       gap: 1rem;
     }
   }
@@ -38,9 +38,15 @@
   }
 
   &__items {
+    position: sticky;
+    top: 5rem;
+  }
+
+  &__items-container {
     width: 100%;
-    overflow: hidden;
     margin-bottom: 2rem;
+    max-width: 30rem;
+    margin: 0 auto;
 
     @include desktop {
       order: 2;
@@ -104,9 +110,9 @@
 
   &__line {
     max-height: 0.08rem;
-    margin: 1rem 0 1rem -1rem;
+    margin: 1rem 0;
     background-color: $grey-blue;
-    width: 120%;
+    width: 100%;
   }
 
   &__total {

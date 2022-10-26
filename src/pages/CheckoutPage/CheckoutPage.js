@@ -10,7 +10,6 @@ import jcb from "../../assets/images/jcb.png";
 
 const CheckoutPage = () => {
   const cart = useContext(ProductsContext);
-  const [isSameAsShipping, setIsSameAsShipping] = useState(true);
   const [subtotal, setSubtotal] = useState(0);
 
   //Create a function to track subtotal
@@ -28,12 +27,6 @@ const CheckoutPage = () => {
     const total = subtotal - discount + shipping;
     let formattedTotal = (Math.round(total * 100) / 100).toFixed(2);
     return formattedTotal;
-  };
-
-  //Create a function to keep track of billing refill checkbox
-  const handleCheck = (e) => {
-    setIsSameAsShipping(!isSameAsShipping);
-    console.log(e.target.checked);
   };
 
   //Create a function to handle submit
@@ -75,18 +68,20 @@ const CheckoutPage = () => {
         <h2 className="checkout__title">Check Out</h2>
         <div className="line  "></div>
         <div className="checkout__content">
-          <div className="checkout__items">
-            {checkingOutProducts}
-            <div className="checkout__subtotal">
-              <span>Subtotal:</span>
-              <span>${subtotal.toFixed(2)}</span>
-            </div>
-            <p className="checkout__discount">Discount: </p>
-            <p className="checkout__shipping">Shipping: </p>
-            <div className="line checkout__line "></div>
-            <div className="checkout__total">
-              <span>Total:</span>
-              <span>${findTotal(subtotal)}</span>
+          <div className="checkout__items-container">
+            <div className="checkout__items">
+              {checkingOutProducts}
+              <div className="checkout__subtotal">
+                <span>Subtotal:</span>
+                <span>${subtotal.toFixed(2)}</span>
+              </div>
+              <p className="checkout__discount">Discount: </p>
+              <p className="checkout__shipping">Shipping: </p>
+              <div className="line checkout__line "></div>
+              <div className="checkout__total">
+                <span>Total:</span>
+                <span>${findTotal(subtotal)}</span>
+              </div>
             </div>
           </div>
           <form className="checkout__forms" onSubmit={handleSubmit}>
@@ -141,69 +136,6 @@ const CheckoutPage = () => {
                 />
               </label>
             </div>
-            <label className="checkout__billing-refill">
-              <input
-                type="checkbox"
-                className="checkout__checkbox"
-                value={isSameAsShipping}
-                onChange={handleCheck}
-                defaultChecked={isSameAsShipping}
-              />
-              Same As Billing Address
-            </label>
-            {!isSameAsShipping && (
-              <div className="checkout__shipping billing">
-                <h2 className="billing__title">Billing</h2>
-                <label className="billing__label">
-                  Full Name
-                  <input
-                    type="text"
-                    className="billing__input"
-                    name="billingFullName"
-                  />
-                </label>
-                <label className="billing__label">
-                  Address
-                  <input
-                    type="text"
-                    className="billing__input"
-                    name="billingAddress"
-                  />
-                </label>
-                <label className="billing__label">
-                  City
-                  <input
-                    type="text"
-                    className="billing__input"
-                    name="billingCity"
-                  />
-                </label>
-                <label className="billing__label">
-                  Country
-                  <input
-                    type="text"
-                    className="billing__input"
-                    name="billingCountry"
-                  />
-                </label>
-                <label className="billing__label">
-                  Postal Code
-                  <input
-                    type="text"
-                    className="billing__input"
-                    name="billingPostalCode"
-                  />
-                </label>
-                <label className="billing__label">
-                  Phone Number
-                  <input
-                    type="text"
-                    className="billing__input"
-                    name="billingPhoneNumber"
-                  />
-                </label>
-              </div>
-            )}
             <div className="checkout__payment payment">
               <h2 className="payment__title">Payment</h2>
               <div className="payment__icons">
