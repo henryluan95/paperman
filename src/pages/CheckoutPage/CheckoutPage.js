@@ -1,26 +1,14 @@
 import "./CheckoutPage.scss";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { ProductsContext } from "../../App";
 import { v4 as uuid } from "uuid";
-import visa from "../../assets/images/visa.svg";
-import mastercard from "../../assets/images/mastercard.svg";
-import express from "../../assets/images/express.svg";
-import discover from "../../assets/images/discover.svg";
-import jcb from "../../assets/images/jcb.png";
+import emailjs from "@emailjs/browser";
 
 const CheckoutPage = () => {
   const cart = useContext(ProductsContext);
   const [subtotal, setSubtotal] = useState(0);
-
-  //Create a function to track subtotal
-  const findSubtotal = () => {
-    let subtotal = 0;
-    cart.forEach(
-      (product) => (subtotal += Number(product.price) * product.quantity)
-    );
-    let formattedSubtotal = (Math.round(subtotal * 100) / 100).toFixed(2);
-    return setSubtotal(Number(formattedSubtotal));
-  };
+  const [paymentMethod, setPaymentMethod] = useState("");
+  const formRef = useRef(null);
 
   //Create a function to track total
   const findTotal = (subtotal, discount = 0, shipping = 0) => {
@@ -29,9 +17,40 @@ const CheckoutPage = () => {
     return formattedTotal;
   };
 
+  //Create a message
+  let message = "";
+
+  cart.forEach(
+    (product) =>
+      (message += `[${product.title}: ${product.modals} x ${product.quantity}] `)
+  );
+
   //Create a function to handle submit
   const handleSubmit = (e) => {
     e.preventDefault();
+    // const form = formRef.current;
+
+    // //Send an email
+    // emailjs
+    //   .sendForm(
+    //     "service_hn7u257",
+    //     "template_v0e4bah",
+    //     form,
+    //     "UTPj7qiThvY6A00o7"
+    //   )
+    //   .then(
+    //     (result) => {
+    //       console.log(result.text);
+    //     },
+    //     (error) => {
+    //       console.log(error.text);
+    //     }
+    //   );
+  };
+
+  //Create a function to handle radio select
+  const handleRadioSelect = (e) => {
+    setPaymentMethod(e.target.value);
   };
 
   const checkingOutProducts = cart.map((product) => {
@@ -59,8 +78,18 @@ const CheckoutPage = () => {
   });
 
   useEffect(() => {
+    //Create a function to track subtotal
+    const findSubtotal = () => {
+      let subtotal = 0;
+      cart.forEach(
+        (product) => (subtotal += Number(product.price) * product.quantity)
+      );
+      let formattedSubtotal = (Math.round(subtotal * 100) / 100).toFixed(2);
+      return setSubtotal(Number(formattedSubtotal));
+    };
+
     findSubtotal();
-  }, [checkingOutProducts]);
+  }, [checkingOutProducts, cart]);
 
   return (
     <div className="checkout-page">
@@ -84,7 +113,11 @@ const CheckoutPage = () => {
               </div>
             </div>
           </div>
-          <form className="checkout__forms" onSubmit={handleSubmit}>
+          <form
+            className="checkout__forms"
+            onSubmit={handleSubmit}
+            ref={formRef}
+          >
             <div className="checkout__shipping shipping">
               <h2 className="shipping__title">Shipping</h2>
               <label className="shipping__label">
@@ -93,38 +126,16 @@ const CheckoutPage = () => {
                   type="text"
                   className="shipping__input"
                   name="shippingFullName"
+                  required
                 />
               </label>
               <label className="shipping__label">
-                Address
+                Full Address
                 <input
                   type="text"
                   className="shipping__input"
-                  name="shippingAddress"
-                />
-              </label>
-              <label className="shipping__label">
-                City
-                <input
-                  type="text"
-                  className="shipping__input"
-                  name="shippingCity"
-                />
-              </label>
-              <label className="shipping__label">
-                Country
-                <input
-                  type="text"
-                  className="shipping__input"
-                  name="shippingCountry"
-                />
-              </label>
-              <label className="shipping__label">
-                Postal Code
-                <input
-                  type="text"
-                  className="shipping__input"
-                  name="shippingPostalCode"
+                  name="shippingFullAddress"
+                  required
                 />
               </label>
               <label className="shipping__label">
@@ -133,69 +144,75 @@ const CheckoutPage = () => {
                   type="text"
                   className="shipping__input"
                   name="shippingPhoneNumber"
+                  required
+                />
+              </label>
+              <label className="shipping__label--hide">
+                Message
+                <input
+                  type="text"
+                  className="shipping__input--hide"
+                  name="shippingMessage"
+                  required
+                  defaultValue={message}
                 />
               </label>
             </div>
             <div className="checkout__payment payment">
-              <h2 className="payment__title">Payment</h2>
-              <div className="payment__icons">
-                <img src={visa} alt="visa" className="payment__icon" />
-                <img
-                  src={mastercard}
-                  alt="mastercard"
-                  className="payment__icon"
-                />
-                <img src={express} alt="express" className="payment__icon" />
-                <img src={discover} alt="discover" className="payment__icon" />
-                <img src={jcb} alt="jcb" className="payment__icon" />
-              </div>
-              <label className="payment__label">
-                Name on Card
+              <h2 className="payment__title">Payment Methods</h2>
+              <label className="payment__label payment__label--row">
                 <input
-                  type="text"
-                  className="payment__input"
-                  name="paymentNameOnCard"
-                  placeholder="Michael Kalinichenko"
+                  type="radio"
+                  id="cod"
+                  name="payment_type"
+                  value="cod"
+                  className="payment__radio-input"
+                  checked={paymentMethod === "cod"}
+                  onChange={handleRadioSelect}
+                  required
                 />
+                Collect On Delivery (COD)
               </label>
-              <label className="payment__label">
-                Credit card number
+              {paymentMethod === "cod" && (
+                <div className="payment__instruction">
+                  <p className="payment__instruction-text">
+                    Please check your order upon delivery and complete your
+                    payment.
+                  </p>
+                </div>
+              )}
+              <label className="payment__label payment__label--row">
                 <input
-                  type="text"
-                  className="payment__input"
-                  name="paymentCreditCardNumber"
-                  placeholder="1111-2222-3333-4444"
+                  type="radio"
+                  id="transfer"
+                  name="payment_type"
+                  value="transfer"
+                  checked={paymentMethod === "transfer"}
+                  className="payment__radio-input"
+                  onChange={handleRadioSelect}
+                  required
                 />
+                E-transfer
               </label>
-              <label className="payment__label">
-                Exp Month
-                <input
-                  type="text"
-                  className="payment__input"
-                  name="paymentExpMonth"
-                  placeholder="September"
-                />
-              </label>
-              <div className="payment__year-cvv">
-                <label className="payment__label">
-                  Exp Year
-                  <input
-                    type="text"
-                    className="payment__input"
-                    name="paymentExpYear"
-                    placeholder="2018"
-                  />
-                </label>
-                <label className="payment__label">
-                  CVV
-                  <input
-                    type="text"
-                    className="payment__input"
-                    name="paymentCVV"
-                    placeholder="352"
-                  />
-                </label>
-              </div>
+              {paymentMethod === "transfer" && (
+                <div className="payment__instruction">
+                  <p className="payment__instruction-text">
+                    Please make an e-transfer with the following message: "web -
+                    your phone number"
+                  </p>
+                  <p className="payment__instruction-text">
+                    Nguyen Thuy Mai Anh
+                  </p>
+                  <ul>
+                    <li>
+                      Bank: <b>VIETCOMBANK</b>
+                    </li>
+                    <li>
+                      Account Number: <b>0071001073262</b>
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
             <button className="button checkout__place-order">
               Place Order
