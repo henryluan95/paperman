@@ -2,6 +2,8 @@ import "./CheckoutPage.scss";
 import { useContext, useEffect, useState, useRef } from "react";
 import { ProductsContext } from "../../App";
 import { v4 as uuid } from "uuid";
+import momo from "../../assets/images/momo.png";
+import qr from "../../assets/images/qr.png";
 import emailjs from "@emailjs/browser";
 
 const CheckoutPage = () => {
@@ -197,8 +199,9 @@ const CheckoutPage = () => {
               {paymentMethod === "transfer" && (
                 <div className="payment__instruction">
                   <p className="payment__instruction-text">
-                    Please make an e-transfer with the following message: "web -
-                    your phone number"
+                    Please make an e-transfer of {` $${findTotal(subtotal)} `}
+                    with the following message: "web - your phone number", then
+                    PLACE ORDER.
                   </p>
                   <p className="payment__instruction-text">
                     Nguyen Thuy Mai Anh
@@ -211,6 +214,30 @@ const CheckoutPage = () => {
                       Account Number: <b>0071001073262</b>
                     </li>
                   </ul>
+                </div>
+              )}
+              <label className="payment__label payment__label--row">
+                <input
+                  type="radio"
+                  id="momo"
+                  name="payment_type"
+                  value="momo"
+                  checked={paymentMethod === "momo"}
+                  className="payment__radio-input"
+                  onChange={handleRadioSelect}
+                  required
+                />
+                Momo
+                <img src={momo} alt="momo icon" className="payment__icon" />
+              </label>
+              {paymentMethod === "momo" && (
+                <div className="payment__instruction">
+                  <p className="payment__instruction-text">
+                    Please scan the QR code to process your payment via Momo
+                    Wallet, then PLACE ORDER. Your total is
+                    {` $${findTotal(subtotal)}.`}
+                  </p>
+                  <img src={qr} alt="momo qr code" className="payment__qr" />
                 </div>
               )}
             </div>

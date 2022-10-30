@@ -204,7 +204,13 @@
   }
 
   &__icon {
+    margin-left: 0.5rem;
     width: 2rem;
+  }
+
+  &__qr {
+    margin-left: 0.5rem;
+    width: 10rem;
   }
 
   &__year-cvv {
@@ -220,7 +226,9 @@
   }
 
   &__instruction {
-    min-width: 40rem;
+    @include tablet {
+      width: 40rem;
+    }
     margin: 1rem 0;
     border-radius: 1.25rem;
     border: 1px #004359 solid;
