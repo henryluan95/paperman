@@ -28,6 +28,7 @@ const CheckoutPage = () => {
   );
 
   //Create a function to handle submit
+  //Uncomment this to receive actual orders
   const handleSubmit = (e) => {
     e.preventDefault();
     // const form = formRef.current;
