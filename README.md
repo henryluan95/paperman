@@ -24,7 +24,7 @@ You can watch my live demos right here:
 ![Old Website Design](https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/paperman-og%2FPaperman-OG1.png?alt=media&token=03cb08a1-8219-4562-a16b-c1127fc9c122)
 ![Old Website Design](https://firebasestorage.googleapis.com/v0/b/paperman-4a7c4.appspot.com/o/paperman-og%2FPaperman-OG3.png?alt=media&token=e1d40f1f-a06d-4ac0-8b74-9a7bcff7f370)
 
-## Tech Stacks
+## Tech Stack
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
